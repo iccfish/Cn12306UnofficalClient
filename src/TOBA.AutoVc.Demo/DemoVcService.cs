@@ -15,7 +15,7 @@ namespace TOBA.AutoVc.RkVc
 
 	using AutoVc;
 
-	class DemoVcService : AbstractVerifyCodeRecognizeService
+	public class DemoVcService : AbstractVerifyCodeRecognizeService
 	{
 		public DemoVcService()
 		{

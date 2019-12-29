@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\12306.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,17 +41,19 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TOBA.AutoVc, Version=1.1.0.0, Culture=neutral, PublicKeyToken=063375134da4cdc3">
+      <HintPath>..\..\OfficalBuild\TOBA.AutoVc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DemoVcService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TOBA.AutoVc\TOBA.AutoVc.csproj">
-      <Project>{c356c447-289b-4912-8c2f-4151dc170f8e}</Project>
-      <Name>TOBA.AutoVc</Name>
-      <Private>False</Private>
-    </ProjectReference>
+    <None Include="..\12306.snk">
+      <Link>12306.snk</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

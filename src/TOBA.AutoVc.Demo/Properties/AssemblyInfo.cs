@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("TOBA.AutoVc.RkVc")]
+[assembly: AssemblyTitle("TOBA.AutoVc.Demo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Fish")]
-[assembly: AssemblyProduct("TOBA.AutoVc.RkVc")]
+[assembly: AssemblyProduct("TOBA.AutoVc.Demo")]
 [assembly: AssemblyCopyright("Copyright © Fish 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
