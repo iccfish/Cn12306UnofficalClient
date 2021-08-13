@@ -35,3 +35,12 @@
 同时，本鱼还有微信公众号， [捐助助手](https://blog.iccfish.com/about/donate/) 这个页面下面有二维码，也欢迎关注。
 
 最后，[鱼的官网](https://www.fishlee.net/)在此，感谢[后花园所有QQ群](https://www.fishlee.net/about/)成员中这八年的一直相伴，愿我们彼此安好。
+
+## 三方库依赖
+
+编译软件依赖两个独立的三方库，需要自行安装，并解决版权问题。
+
+- DevComponents DotNetBar
+- BetterListView
+
+其中 BetterListView使用免费的Express版即可（但如果使用Express版，那么项目中的引用需要修改）。
