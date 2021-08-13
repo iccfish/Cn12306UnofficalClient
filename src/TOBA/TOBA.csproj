@@ -1,0 +1,1805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAE86A95-050C-4DBA-A804-C8F8152DB52C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TOBA</RootNamespace>
+    <AssemblyName>订票助手.NET</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TOBA.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\mainForm.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BetterListView, Version=3.15.0.0, Culture=neutral, PublicKeyToken=e6c91a3add447be2, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.36, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountService.cs" />
+    <Compile Include="Account\AccountServiceModule.cs" />
+    <Compile Include="Account\AccountUiServiceLoader.cs" />
+    <Compile Include="Account\BindMobileService.cs" />
+    <Compile Include="Account\Entities\BindTelApiResponse.cs" />
+    <Compile Include="Account\Entities\LogoutReason.cs" />
+    <Compile Include="Account\Entities\My12306Info.cs" />
+    <Compile Include="Account\Entities\QueryInfoResponse.cs" />
+    <Compile Include="Account\Entities\UserKeyDataComparer.cs" />
+    <Compile Include="Account\GetDisplayNameWorker.cs" />
+    <Compile Include="Account\IAccountService.cs" />
+    <Compile Include="Account\ISessionLoginService.cs" />
+    <Compile Include="Account\ISessionReloginService.cs" />
+    <Compile Include="Account\RequireSessionLoginWorker.cs" />
+    <Compile Include="Account\SessionCookiesPersentator.cs" />
+    <Compile Include="Account\SessionCookiesPersentatorModule.cs" />
+    <Compile Include="Account\SessionLoginService.cs" />
+    <Compile Include="Account\SessionReloginService.cs" />
+    <Compile Include="AppContext.cs" />
+    <Compile Include="Assets\FreeWp8Icons_White.Designer.cs" />
+    <Compile Include="Assets\SR.Designer.cs" />
+    <Compile Include="BackupOrder\BackupCart.cs" />
+    <Compile Include="BackupOrder\BackupCartItem.cs" />
+    <Compile Include="BackupOrder\BackupOrderConfiguration.cs" />
+    <Compile Include="BackupOrder\BackupOrderService.cs" />
+    <Compile Include="BackupOrder\BackupOrderServiceModule.cs" />
+    <Compile Include="BackupOrder\CheckFaceResult.cs" />
+    <Compile Include="BackupOrder\Entity\BackupOrderItem.cs" />
+    <Compile Include="BackupOrder\Entity\BackupTrain.cs" />
+    <Compile Include="BackupOrder\Entity\ConfirmBackupOrderResponseData.cs" />
+    <Compile Include="BackupOrder\Entity\HbQueueInfoCacheItem.cs" />
+    <Compile Include="BackupOrder\Entity\QueryBackupOrderQueueResponse.cs" />
+    <Compile Include="BackupOrder\Entity\SubmitBackupOrderResponse.cs" />
+    <Compile Include="BackupOrder\Entity\UnpayBackupOrder.cs" />
+    <Compile Include="BackupOrder\HbInfoProvider.cs" />
+    <Compile Include="BackupOrder\IBackupOrderService.cs" />
+    <Compile Include="BackupOrder\IHbInfoProvider.cs" />
+    <Compile Include="BackupOrder\TrainHbAvailableEventArgs.cs" />
+    <Compile Include="Configuration\ApiConfiguration.cs" />
+    <Compile Include="Configuration\AutoResumeRefreshConfiguration.cs" />
+    <Compile Include="Configuration\ConfigurationBase.cs" />
+    <Compile Include="Configuration\ConfigurationChangedEventArgs.cs" />
+    <Compile Include="Configuration\ConfigurationPresets.cs" />
+    <Compile Include="Configuration\ConfigurationProvider.cs" />
+    <Compile Include="Configuration\ConfigurationServiceLoader.cs" />
+    <Compile Include="Configuration\DynamicDataConfiguration.cs" />
+    <Compile Include="Configuration\FuncConfiguration.cs" />
+    <Compile Include="Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Configuration\MediaConfiguration.cs" />
+    <Compile Include="Configuration\NetworkConfiguration.cs" />
+    <Compile Include="Configuration\OrderConfiguration.cs" />
+    <Compile Include="Configuration\ProgramConfiguration.cs" />
+    <Compile Include="Configuration\QueryConfiguration.cs" />
+    <Compile Include="Configuration\QueryViewConfiguration.cs" />
+    <Compile Include="Configuration\RunningMode.cs" />
+    <Compile Include="Configuration\Statistics.cs" />
+    <Compile Include="Configuration\SubmitOrder.cs" />
+    <Compile Include="Configuration\TrainIdAliasStorage.cs" />
+    <Compile Include="Configuration\UiConfiguration.cs" />
+    <Compile Include="Data\MaxOccourTimesCounter.cs" />
+    <Compile Include="Data\ParamData.cs" />
+    <Compile Include="Entity\ApiBaseResponse.cs" />
+    <Compile Include="Entity\AutoPreSubmitConfiguration.cs" />
+    <Compile Include="Entity\BasicIdValueEntity.cs" />
+    <Compile Include="Entity\BasicTrainStation.cs" />
+    <Compile Include="Entity\CancelEventArgs.cs" />
+    <Compile Include="Entity\DateTimeStruct.cs" />
+    <Compile Include="Entity\Dto.cs" />
+    <Compile Include="Entity\DynamicJsData.cs" />
+    <Compile Include="Entity\EmptyResponseException.cs" />
+    <Compile Include="Entity\EventHashSet.cs" />
+    <Compile Include="Entity\EventList.cs" />
+    <Compile Include="Entity\ExportedSession.cs" />
+    <Compile Include="Entity\ForceLogoutException.cs" />
+    <Compile Include="Entity\ISeatCheckRule.cs" />
+    <Compile Include="Entity\ItemAction.cs" />
+    <Compile Include="Entity\ItemChangeEventArgs.cs" />
+    <Compile Include="Entity\ItemEventArgs.cs" />
+    <Compile Include="Entity\ItemPropertyChangedEventArgs.cs" />
+    <Compile Include="Entity\ItemPropertyChangingEventArgs.cs" />
+    <Compile Include="Entity\ItemUpdateEventArgs.cs" />
+    <Compile Include="Entity\ParseUtility.cs" />
+    <Compile Include="Entity\PassengerInTicket.cs" />
+    <Compile Include="Entity\QueryParam.cs" />
+    <Compile Include="Entity\QueryParam.Function.cs" />
+    <Compile Include="Entity\QueryParamEventArgs.cs" />
+    <Compile Include="Entity\QueryParamList.cs" />
+    <Compile Include="Entity\QueryParamUiSetting.cs" />
+    <Compile Include="Entity\QueryState.cs" />
+    <Compile Include="Entity\RefundInfo.cs" />
+    <Compile Include="Entity\ResourceLocation.cs" />
+    <Compile Include="Entity\SeatCheckRules\MinimumTicketCheckRule.cs" />
+    <Compile Include="Entity\SeatSubType.cs" />
+    <Compile Include="Entity\SeatType.cs" />
+    <Compile Include="Entity\Sex.cs" />
+    <Compile Include="Entity\SystemBusyException.cs" />
+    <Compile Include="Entity\SystemClosedException.cs" />
+    <Compile Include="Entity\TicketFilterResult.cs" />
+    <Compile Include="Entity\TicketType.cs" />
+    <Compile Include="Entity\TrainStation.cs" />
+    <Compile Include="Entity\UserStationHitCount.cs" />
+    <Compile Include="Entity\Web\Passenger.cs" />
+    <Compile Include="Entity\Web\PassengerList.cs" />
+    <Compile Include="Entity\Web\SystemNotice.cs" />
+    <Compile Include="EventInfoArgs.cs" />
+    <Compile Include="EventLogType.cs" />
+    <Compile Include="Events.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Extension\AbstractExtension.cs" />
+    <Compile Include="Extension\ExtensionCatalog.cs" />
+    <Compile Include="Extension\IExtension.cs" />
+    <Compile Include="Extension\IExtensionManager.cs" />
+    <Compile Include="Extension\ServiceManager.cs" />
+    <Compile Include="Gif.cs" />
+    <Compile Include="Interactive\WebBrowserInfo.cs" />
+    <Compile Include="Interactive\WebBrowserManager.cs" />
+    <Compile Include="IOperation.cs" />
+    <Compile Include="ISession.cs" />
+    <Compile Include="ISessionPresentor.cs" />
+    <Compile Include="MailNotification\MailConfiguration.cs" />
+    <Compile Include="MailNotification\MailSender.cs" />
+    <Compile Include="Media\BaseMp3Player.cs" />
+    <Compile Include="Media\HbOrderMusic.cs" />
+    <Compile Include="Media\ITicketMusic.cs" />
+    <Compile Include="Media\LosingSoundPlayer.cs" />
+    <Compile Include="Media\MciController.cs" />
+    <Compile Include="Media\TicketMusic4Success.cs" />
+    <Compile Include="Media\TicketPromptMusic.cs" />
+    <Compile Include="Media\TipSoundPlayer.cs" />
+    <Compile Include="OpearationState.cs" />
+    <Compile Include="Operation.cs" />
+    <Compile Include="Order\AutoSubmitWorker.cs" />
+    <Compile Include="Order\Entity\AutoSubmitOrderResponse.cs" />
+    <Compile Include="Order\Entity\OrderArchiveCollection.cs" />
+    <Compile Include="Order\Entity\OrderCacheItem.cs" />
+    <Compile Include="Order\Entity\OrderItem.cs" />
+    <Compile Include="Order\Entity\OrderStatus.cs" />
+    <Compile Include="Order\Entity\OrderTicket.cs" />
+    <Compile Include="Order\Entity\StationInTicket.cs" />
+    <Compile Include="Order\MessageAnalyzer.cs" />
+    <Compile Include="Order\OrderManager.cs" />
+    <Compile Include="Order\OrderRefundEventArgs.cs" />
+    <Compile Include="Order\OrderSubmitContext.cs" />
+    <Compile Include="Order\OrderSubmitEventArgs.cs" />
+    <Compile Include="Order\PayOrderWorker.cs" />
+    <Compile Include="Order\QueueOrderWorker.cs" />
+    <Compile Include="Order\RecentlySubmitFailedTokenStorageProvider.cs" />
+    <Compile Include="Order\SubmitOrderBase.cs" />
+    <Compile Include="Order\SubmitOrderWorker.cs" />
+    <Compile Include="Order\Web\CancelOrderResponse.cs" />
+    <Compile Include="Order\Web\CancelOrderResult.cs" />
+    <Compile Include="Order\Web\GetQueueCountResult.cs" />
+    <Compile Include="Order\Web\OrderQueueResponse.cs" />
+    <Compile Include="Order\Web\OrderQueueResult.cs" />
+    <Compile Include="Order\Web\QueryMyOrderResponse.cs" />
+    <Compile Include="Order\Web\QueryMyOrderResult.cs" />
+    <Compile Include="Order\Web\QueueOrderResult.cs" />
+    <Compile Include="Otn\Base32.cs" />
+    <Compile Include="Otn\Entity\BaseOtnApiResponseWithFlagAndMsg.cs" />
+    <Compile Include="Otn\Entity\CheckUserResponse.cs" />
+    <Compile Include="Otn\Entity\CheckUserResult.cs" />
+    <Compile Include="Otn\Entity\OtnWebResponse.cs" />
+    <Compile Include="Otn\ExtensionMethod.cs" />
+    <Compile Include="Otn\Msg.cs" />
+    <Compile Include="Otn\Workers\AccountModifyWorker.cs" />
+    <Compile Include="Otn\Workers\PassengerManager.cs" />
+    <Compile Include="Otn\Workers\VerifyCodeCheckWorker.cs" />
+    <Compile Include="Passport\IUamAuthService.cs" />
+    <Compile Include="Passport\PassportModule.cs" />
+    <Compile Include="Passport\UamAuthService.cs" />
+    <Compile Include="Platform\DeviceFingerprint\DeviceData.cs" />
+    <Compile Include="Platform\DeviceFingerprint\DeviceFingerprintSessinPersentor.cs" />
+    <Compile Include="Platform\DeviceFingerprint\FingerprintExtension.cs" />
+    <Compile Include="Platform\DeviceFingerprint\FingerprintInfo.cs" />
+    <Compile Include="Platform\DeviceFingerprint\FingerprintService.cs" />
+    <Compile Include="Platform\DeviceFingerprint\FingerprintServiceLoader.cs" />
+    <Compile Include="Platform\DeviceFingerprint\HostContext.cs" />
+    <Compile Include="Platform\DeviceFingerprint\IFingerprintInfo.cs" />
+    <Compile Include="Platform\DeviceFingerprint\IFingerprintService.cs" />
+    <Compile Include="Platform\DeviceFingerprint\Utility.cs" />
+    <Compile Include="Platform\HttpConf\HttpConf.cs" />
+    <Compile Include="Platform\HttpConf\Web12306ConfModule.cs" />
+    <Compile Include="Platform\HttpConf\Web12306ConfProvider.cs" />
+    <Compile Include="Platform\IQrLogin12306Service.cs" />
+    <Compile Include="Platform\IWeb12306Conf.cs" />
+    <Compile Include="Platform\IWeb12306ConfProvider.cs" />
+    <Compile Include="Platform\QrLogin12306\QrLogin12306Service.cs" />
+    <Compile Include="Platform\QrLogin12306\QrLogin12306ServiceModule.cs" />
+    <Compile Include="Platform\SlideVc\SlideAppId.cs" />
+    <Compile Include="Platform\SlideVc\SlideVcModule.cs" />
+    <Compile Include="Platform\SlideVc\SlideVcService.cs" />
+    <Compile Include="Platform\Sm4\ISm4CryptoService.cs" />
+    <Compile Include="Platform\Sm4\Mode.cs" />
+    <Compile Include="Platform\Sm4\Sm4.cs" />
+    <Compile Include="Platform\Sm4\Sm4CryptoModule.cs" />
+    <Compile Include="Platform\Sm4\Sm4CryptoService.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\ITrainBaseInfoStorageProvider.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainBaseInfo.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainBaseInfoStorage.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainBaseInfoStorageExtension.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainBaseInfoStorageProvider.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainBaseInfoStorageProviderModule.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainStop2StopInfo.cs" />
+    <Compile Include="Platform\TrainBaseInfoStorage\TrainStopBaseInfo.cs" />
+    <Compile Include="Profile\IUserProfile.cs" />
+    <Compile Include="Profile\Root.cs" />
+    <Compile Include="Profile\UserConfiguration.cs" />
+    <Compile Include="Profile\UserKeyData.cs" />
+    <Compile Include="Profile\UserKeyDataMap.cs" />
+    <Compile Include="Profile\UserProfile.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryResumeManager\Controller.cs" />
+    <Compile Include="QueryResumeManager\ControllerSession.cs" />
+    <Compile Include="QueryResumeManager\IOrderSubmitEventSource.cs" />
+    <Compile Include="QueryResumeManager\SourceSubmitContext.cs" />
+    <Compile Include="Query\AutoSelectResult.cs" />
+    <Compile Include="Query\Entity\AutoSelectStat.cs" />
+    <Compile Include="Query\Entity\IQueryLeftTicketResponse.cs" />
+    <Compile Include="Query\Entity\LeftTicketData.cs" />
+    <Compile Include="Query\Entity\LeftTickets.cs" />
+    <Compile Include="Query\Entity\QueryLeftTicketResponse.cs" />
+    <Compile Include="Query\Entity\QueryLeftTicketResponseSimple.cs" />
+    <Compile Include="Query\Entity\QueryLeftTicketResponseSimpleData.cs" />
+    <Compile Include="Query\Entity\QueryLeftTicketResult.cs" />
+    <Compile Include="Query\Entity\QueryResult.cs" />
+    <Compile Include="Query\Entity\QueryResultItem.cs" />
+    <Compile Include="Query\Entity\StartStationSellInfo.cs" />
+    <Compile Include="Query\Entity\TicketQueryRequestParamInfo.cs" />
+    <Compile Include="Query\Entity\TicketStationInfo.cs" />
+    <Compile Include="Query\Entity\TrainDataInfo.cs" />
+    <Compile Include="Query\Entity\TrainStopCollection.cs" />
+    <Compile Include="Query\Entity\TrainStopInfo.cs" />
+    <Compile Include="Query\Entity\TrainStopResponse.cs" />
+    <Compile Include="Query\Entity\TrainStopResult.cs" />
+    <Compile Include="Query\IFillLeftTicketService.cs" />
+    <Compile Include="Query\ILeftTicketQueryService.cs" />
+    <Compile Include="Query\IQueryTimeoutWarningService.cs" />
+    <Compile Include="Query\ISystemBusyWarningService.cs" />
+    <Compile Include="Query\ITicketOrderInitializerService.cs" />
+    <Compile Include="Query\ITicketPriceFillPrice.cs" />
+    <Compile Include="Query\LeftTicketQueryService.cs" />
+    <Compile Include="Query\MessageTranslator.cs" />
+    <Compile Include="Query\QueryInterfaceStatus.cs" />
+    <Compile Include="Query\QueryResultDifferenceCalculator.cs" />
+    <Compile Include="Query\QueryServiceModule.cs" />
+    <Compile Include="Query\QueryStationManager.cs" />
+    <Compile Include="Query\QueryTimeoutWarningService.cs" />
+    <Compile Include="Query\QueryTrainStopInfoWorker.cs" />
+    <Compile Include="Query\StationRandomService.cs" />
+    <Compile Include="Query\SystemBusyWarningService.cs" />
+    <Compile Include="Query\TicketOrderInitializerService.cs" />
+    <Compile Include="Query\TicketQueryWorker.cs" />
+    <Compile Include="ResLoader.cs" />
+    <Compile Include="ResourceLoader.cs" />
+    <Compile Include="RunTime.cs" />
+    <Compile Include="Service\AutoVcConfig.cs" />
+    <Compile Include="Service\IBaseService.cs" />
+    <Compile Include="Service\VerifyCodeRecognizeServiceLoader.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="SessionManager.cs" />
+    <Compile Include="TaskExtensions.cs" />
+    <Compile Include="TestFlag.cs" />
+    <Compile Include="UiEvents.cs" />
+    <Compile Include="UI\Components\Account\UserLoginComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Components\Account\UserLoginComponent.Designer.cs">
+      <DependentUpon>UserLoginComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Components\BackupOrderUiOperationModule.cs" />
+    <Compile Include="UI\Components\BackupOrder\BackupOrderUiOperation.cs" />
+    <Compile Include="UI\Components\IBackupOrderUiOperation.cs" />
+    <Compile Include="UI\Controls\Account\UserMainPageContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Account\UserMainPageContent.Designer.cs">
+      <DependentUpon>UserMainPageContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Account\UserTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Account\UserTabDnb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Account\UserTabOperation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Account\UserTabOperation.Designer.cs">
+      <DependentUpon>UserTabOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\BackupOrder\BackupOrderContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\BackupOrder\BackupOrderContainer.Designer.cs">
+      <DependentUpon>BackupOrderContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\BackupOrder\HbOrderListViewGroup.cs" />
+    <Compile Include="UI\Controls\BackupOrder\HbOrderLoadScope.cs" />
+    <Compile Include="UI\Controls\Common\ButtonExtend.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\CloseButton12px.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\ColorSchema.cs" />
+    <Compile Include="UI\Controls\Common\ComboEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\DataGridViewButtonExtendCell.cs" />
+    <Compile Include="UI\Controls\Common\DataGridViewButtonExtendColumn.cs" />
+    <Compile Include="UI\Controls\Common\DateComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\EnumComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\IListBoxExItem.cs" />
+    <Compile Include="UI\Controls\Common\IntNumbericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\LabelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\ListBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\ListBoxExItem.cs" />
+    <Compile Include="UI\Controls\Common\ListItemRenderer.cs" />
+    <Compile Include="UI\Controls\Common\ListViewResource.cs" />
+    <Compile Include="UI\Controls\Common\LoadingTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\LoadingTip.Designer.cs">
+      <DependentUpon>LoadingTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Common\LogView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\RowStyleType.cs" />
+    <Compile Include="UI\Controls\Common\StyleConfigAttribute.cs" />
+    <Compile Include="UI\Controls\Common\TipBarMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\TipBarMessage.Designer.cs">
+      <DependentUpon>TipBarMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Common\TrainSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Common\TrainSelector.Designer.cs">
+      <DependentUpon>TrainSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Common\TypeBinder.cs" />
+    <Compile Include="UI\Controls\ControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\IVerifyCodeControl.cs" />
+    <Compile Include="UI\Controls\Log\SysLogPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Log\SysLogPanel.Designer.cs">
+      <DependentUpon>SysLogPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Log\SysLogTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\MainFrame\TopNav.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\MainFrame\TopNav.Designer.cs">
+      <DependentUpon>TopNav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Menu\UserTravelMenuStripItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\ForumNews.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\ForumNews.Designer.cs">
+      <DependentUpon>ForumNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\Loading.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\MailStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\MemoryMonitoringLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\MsgLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\MsgLayer.Designer.cs">
+      <DependentUpon>MsgLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\NotAvailable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\NotAvailable.Designer.cs">
+      <DependentUpon>NotAvailable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\QuickOperation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\QuickOperation.Designer.cs">
+      <DependentUpon>QuickOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\QuickSettingStatusItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\StationNews.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\StationNews.Designer.cs">
+      <DependentUpon>StationNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\SystemNotice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\SystemNotice.Designer.cs">
+      <DependentUpon>SystemNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\TabWelcome.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\TabWelcomeContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Misc\TabWelcomeContent.Designer.cs">
+      <DependentUpon>TabWelcomeContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\FuncOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\FuncOption.Designer.cs">
+      <DependentUpon>FuncOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\GenericOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\GenericOption.Designer.cs">
+      <DependentUpon>GenericOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\MailConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\MailConfig.Designer.cs">
+      <DependentUpon>MailConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\MediaOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\MediaOption.Designer.cs">
+      <DependentUpon>MediaOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\NetworkConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\NetworkConfig.Designer.cs">
+      <DependentUpon>NetworkConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\QueryConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\QueryConfig.Designer.cs">
+      <DependentUpon>QueryConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\QueryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\QueryView.Designer.cs">
+      <DependentUpon>QueryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\SubmitAutoResumeConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\SubmitAutoResumeConfig.Designer.cs">
+      <DependentUpon>SubmitAutoResumeConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\SubmitOrderConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\SubmitOrderConfig.Designer.cs">
+      <DependentUpon>SubmitOrderConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\ThemeConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\ThemeConfig.Designer.cs">
+      <DependentUpon>ThemeConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\UIConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\UIConfig.Designer.cs">
+      <DependentUpon>UIConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Option\WebNotificationConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Option\WebNotificationConfig.Designer.cs">
+      <DependentUpon>WebNotificationConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Order\OrderList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Order\OrderPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Order\OrderPanel.Designer.cs">
+      <DependentUpon>OrderPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Order\OrderTicketListViewItem.cs" />
+    <Compile Include="UI\Controls\Order\OrderTicketListViewItemGroup.cs" />
+    <Compile Include="UI\Controls\Passenger\PassengerLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerList.Designer.cs">
+      <DependentUpon>PassengerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerPanel.Designer.cs">
+      <DependentUpon>PassengerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerSelector.Designer.cs">
+      <DependentUpon>PassengerSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\PassengerTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Passenger\RequestSelectPassengerEventArgs.cs" />
+    <Compile Include="UI\Controls\PlatformUI\VcConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PlatformUI\VcConfig.Designer.cs">
+      <DependentUpon>VcConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\ButtonWithPopup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\ComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\ComboBox.designer.cs">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\GripBounds.cs" />
+    <Compile Include="UI\Controls\Popup\Popup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\Popup.designer.cs">
+      <DependentUpon>Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\PopupAnimations.cs" />
+    <Compile Include="UI\Controls\Popup\PopupComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\PopupComboBox.designer.cs">
+      <DependentUpon>PopupComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Popup\PopupUserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\QueryManager\QmPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\QueryManager\QmPanel.Designer.cs">
+      <DependentUpon>QmPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AddSeatClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AddSeatClass.Designer.cs">
+      <DependentUpon>AddSeatClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AddTrainCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AddTrainCode.Designer.cs">
+      <DependentUpon>AddTrainCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AlternativeDateSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AlternativeDateSetting.Designer.cs">
+      <DependentUpon>AlternativeDateSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AssigenItemGroupEventArgs.cs" />
+    <Compile Include="UI\Controls\Query\AutoSubmitSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\AutoSubmitSetting.Designer.cs">
+      <DependentUpon>AutoSubmitSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\BackupOrderCart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\BackupOrderCart.Designer.cs">
+      <DependentUpon>BackupOrderCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\CalendarQueryLoop.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryConfiguration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryConfiguration.Designer.cs">
+      <DependentUpon>QueryConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryNonLogin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryPage.Designer.cs">
+      <DependentUpon>QueryPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryPageContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryParams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryParams.Designer.cs">
+      <DependentUpon>QueryParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\QueryResultItemSorter.cs" />
+    <Compile Include="UI\Controls\Query\QueryResultListViewItem.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\StartOrEndStation.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\SubItemBase.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TicketCellSubItem.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainAlterFromStationName.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainAlterToStationName.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainCodeSubItem.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainFromStationNameSubItem.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainMemoSubItem.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainToStationDateSubItem.cs" />
+    <Compile Include="UI\Controls\Query\ResultSubItems\TrainToStationNameSubItem.cs" />
+    <Compile Include="UI\Controls\Query\SeatRuleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SeatRuleEditor.Designer.cs">
+      <DependentUpon>SeatRuleEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SeatRuleEditors\MinimumTicketRuleEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SeatRuleEditors\MinimumTicketRuleEditor.Designer.cs">
+      <DependentUpon>MinimumTicketRuleEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SeatSubTypeSequenceSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SeatSubTypeSequenceSetting.Designer.cs">
+      <DependentUpon>SeatSubTypeSequenceSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SellTimeTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\SellTimeTip.Designer.cs">
+      <DependentUpon>SellTimeTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\TrainPrompt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\TrainPrompt.Designer.cs">
+      <DependentUpon>TrainPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Query\TrainStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\TrainStopQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Query\TrainStopQuery.Designer.cs">
+      <DependentUpon>TrainStopQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\SlideVcControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\SlideVcControl.Designer.cs">
+      <DependentUpon>SlideVcControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\TouchClickSimple.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\TouchClickSimple.Designer.cs">
+      <DependentUpon>TouchClickSimple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\TouchClickVc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\TouchClickVc.Designer.cs">
+      <DependentUpon>TouchClickVc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\VcControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\VerifyCodeBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\AccountMobileCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\AccountMobileCheck.Designer.cs">
+      <DependentUpon>AccountMobileCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\ConflictLoginWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\ConflictLoginWarning.Designer.cs">
+      <DependentUpon>ConflictLoginWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\LoginConflict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\LoginConflict.Designer.cs">
+      <DependentUpon>LoginConflict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\MobileNotChecked.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\MobileNotChecked.Designer.cs">
+      <DependentUpon>MobileNotChecked.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\ModifyMobileCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\ModifyMobileCode.Designer.cs">
+      <DependentUpon>ModifyMobileCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\ModifyPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\ModifyPassword.Designer.cs">
+      <DependentUpon>ModifyPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\MultiLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\MultiLogin.Designer.cs">
+      <DependentUpon>MultiLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\QrLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\QrLogin.Designer.cs">
+      <DependentUpon>QrLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Account\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\BackupOrder\PayBackupOrderDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\BackupOrder\PayBackupOrderDlg.Designer.cs">
+      <DependentUpon>PayBackupOrderDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\BackupOrder\SubmitBackupOrderDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\BackupOrder\SubmitBackupOrderDlg.Designer.cs">
+      <DependentUpon>SubmitBackupOrderDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Common\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Common\InputBox.Designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Common\TrainSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Common\TrainSelector.Designer.cs">
+      <DependentUpon>TrainSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Common\YetAnotherWaitingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Common\YetAnotherWaitingDialog.Designer.cs">
+      <DependentUpon>YetAnotherWaitingDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\ConfigCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\ConfigCenter.Designer.cs">
+      <DependentUpon>ConfigCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\DialogBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\EmbedBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\EmbedBrowser.Designer.cs">
+      <DependentUpon>EmbedBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\IMainForm.cs" />
+    <Compile Include="UI\Dialogs\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\MessageDialog.cs" />
+    <Compile Include="UI\Dialogs\Misc\AboutMe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Misc\AboutMe.Designer.cs">
+      <DependentUpon>AboutMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Misc\InitializingUserPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Misc\InitializingUserPage.Designer.cs">
+      <DependentUpon>InitializingUserPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Misc\Startup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Misc\Startup.Designer.cs">
+      <DependentUpon>Startup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\BatchQueryTip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\LocalTimeDifferenceTooLarge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\LocalTimeDifferenceTooLarge.Designer.cs">
+      <DependentUpon>LocalTimeDifferenceTooLarge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\MsgFrom12306.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\MsgFrom12306.Designer.cs">
+      <DependentUpon>MsgFrom12306.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\NotForSaleNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\NotificationBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\NotificationBase.Designer.cs">
+      <DependentUpon>NotificationBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\ServerIpQuickFix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\ServerIpQuickFix.Designer.cs">
+      <DependentUpon>ServerIpQuickFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\SoftwareConflictionWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\SoftwareConflictionWarning.Designer.cs">
+      <DependentUpon>SoftwareConflictionWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\SystemClosed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\SystemClosed.Designer.cs">
+      <DependentUpon>SystemClosed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\SystemSupportError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\SystemSupportError.Designer.cs">
+      <DependentUpon>SystemSupportError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\UserNotVerified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\UserNotVerified.Designer.cs">
+      <DependentUpon>UserNotVerified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\VerifyCodeRecogniseWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Notification\VerifyCodeRecogniseWarning.Designer.cs">
+      <DependentUpon>VerifyCodeRecogniseWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\OptionConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\OptionConfigForm.Designer.cs">
+      <DependentUpon>OptionConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\FastSubmitOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\FastSubmitOrder.Designer.cs">
+      <DependentUpon>FastSubmitOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderNotification.Designer.cs">
+      <DependentUpon>OrderNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderQueue.Designer.cs">
+      <DependentUpon>OrderQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderSubmitDialogBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderSubmitDialogUiBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\OrderSubmitDialogUiBase.Designer.cs">
+      <DependentUpon>OrderSubmitDialogUiBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\PayOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\PayOrder.Designer.cs">
+      <DependentUpon>PayOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\SubmitOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Order\SubmitOrder.Designer.cs">
+      <DependentUpon>SubmitOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\OsSupport\SysErrorFound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\OsSupport\SysErrorFound.Designer.cs">
+      <DependentUpon>SysErrorFound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Passenger\AddPassenger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Passenger\AddPassenger.Designer.cs">
+      <DependentUpon>AddPassenger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Passenger\ImportPassenger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Passenger\ImportPassenger.Designer.cs">
+      <DependentUpon>ImportPassenger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Passenger\PassengerGroupManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Passenger\PassengerGroupManager.Designer.cs">
+      <DependentUpon>PassengerGroupManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Query\QueryManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Query\QueryManager.Designer.cs">
+      <DependentUpon>QueryManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\RequireVcCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\RequireVcCode.Designer.cs">
+      <DependentUpon>RequireVcCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Statistics\NetworkStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Statistics\NetworkStatistics.Designer.cs">
+      <DependentUpon>NetworkStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Statistics\NetworkStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Statistics\NetworkStatus.Designer.cs">
+      <DependentUpon>NetworkStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Statistics\QueryStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Statistics\QueryStatus.Designer.cs">
+      <DependentUpon>QueryStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\BackgroundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\Button.Designer.cs">
+      <DependentUpon>Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\ChevronButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\ChevronButton.Designer.cs">
+      <DependentUpon>ChevronButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\CommandLink.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\CommandLink.Designer.cs">
+      <DependentUpon>CommandLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\Label.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\Label.Designer.cs">
+      <DependentUpon>Label.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialog.cs" />
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogButton.cs" />
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogDefaultButton.cs" />
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogForm.Designer.cs">
+      <DependentUpon>TaskDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogHelpers.cs" />
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogIcon.cs" />
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogLockSystemParameters.cs" />
+    <Compile Include="UI\Dialogs\TaskDialog\TaskDialogResult.cs" />
+    <Compile Include="UI\Dialogs\Vc\SlideVcForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Vc\SlideVcForm.Designer.cs">
+      <DependentUpon>SlideVcForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Vc\TouchClickVcSimpleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Vc\TouchClickVcSimpleForm.Designer.cs">
+      <DependentUpon>TouchClickVcSimpleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormPlacementManager.cs" />
+    <Compile Include="UI\IWelcomeTabContent.cs" />
+    <Compile Include="UI\Media\SoundScheme.cs" />
+    <Compile Include="UI\Media\SystemSound.cs" />
+    <Compile Include="UI\PanelIndex.cs" />
+    <Compile Include="UI\RequireUpdateStatisticsEventArgs.cs" />
+    <Compile Include="UI\Servicing\Order\IOrderQueueUiProvider.cs" />
+    <Compile Include="UI\Servicing\Order\OrderQueueUiProvider.cs" />
+    <Compile Include="UI\Servicing\Order\OrderServiceModule.cs" />
+    <Compile Include="UI\Shell.cs" />
+    <Compile Include="UI\UIEvents.cs" />
+    <Compile Include="UI\UiUtility.cs" />
+    <Compile Include="Utilities\VcUtility.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="WebLib\BaseHttpHandler.cs" />
+    <Compile Include="WebLib\INetClient.cs" />
+    <Compile Include="WebLib\IRequestInspector.cs" />
+    <Compile Include="WebLib\JsonString2BoolConverter.cs" />
+    <Compile Include="WebLib\JsonTick2DateTimeConverter.cs" />
+    <Compile Include="WebLib\NetClient.cs" />
+    <Compile Include="WebLib\NetClientHandler.cs" />
+    <Compile Include="WebLib\NetworkEnvironment.cs" />
+    <Compile Include="WebLib\NetworkTaskManager.cs" />
+    <Compile Include="WebLib\ProxyType.cs" />
+    <Compile Include="WebLib\RandCodeType.cs" />
+    <Compile Include="WebLib\Sockets5\PolipoSocks5ToHttpProxyWrapper.cs" />
+    <Compile Include="WebLib\StringResponseWrapper.cs" />
+    <Compile Include="WebLib\UamWebResponse.cs" />
+    <Compile Include="WebNotification\WebNotifier.cs" />
+    <Compile Include="WebNotification\WebNotifyConfiguration.cs" />
+    <Compile Include="Win32\Consts.cs" />
+    <Compile Include="Win32\HitTest.cs" />
+    <Compile Include="Win32\Minmaxinfo.cs" />
+    <Compile Include="Win32\SetWindowLongOffsets.cs" />
+    <Compile Include="Win32\SetWindowPosFlags.cs" />
+    <Compile Include="Win32\UnsafeNativeMethods.cs" />
+    <Compile Include="Workers\BackgroundTask.cs" />
+    <Compile Include="Workers\BackgroundTaskEventArgs.cs" />
+    <Compile Include="Workers\BlogNewsGather.cs" />
+    <Compile Include="Workers\ForumNewsGather.cs" />
+    <Compile Include="Workers\RemoteResourceManager.cs" />
+    <Compile Include="Workers\ResourceInitializer.cs" />
+    <Compile Include="Workers\SameCityStationResolveWorker.cs" />
+    <Compile Include="Workers\SystemNoticeGather.cs" />
+    <Compile Include="Workers\TaskBase.cs" />
+    <Compile Include="Workers\TaskManager.cs" />
+    <Compile Include="Workers\WorkerBase.cs" />
+    <EmbeddedResource Include="Assets\FreeWp8Icons_White.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\SR.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Controls\Account\UserMainPageContent.resx">
+      <DependentUpon>UserMainPageContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Account\UserTab.resx">
+      <DependentUpon>UserTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Account\UserTabOperation.resx">
+      <DependentUpon>UserTabOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\BackupOrder\BackupOrderContainer.resx">
+      <DependentUpon>BackupOrderContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Common\LoadingTip.resx">
+      <DependentUpon>LoadingTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Common\LogView.resx">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Common\TipBarMessage.resx">
+      <DependentUpon>TipBarMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Common\TrainSelector.resx">
+      <DependentUpon>TrainSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Log\SysLogPanel.resx">
+      <DependentUpon>SysLogPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\MainFrame\TopNav.resx">
+      <DependentUpon>TopNav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\ForumNews.resx">
+      <DependentUpon>ForumNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\MsgLayer.resx">
+      <DependentUpon>MsgLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\NotAvailable.resx">
+      <DependentUpon>NotAvailable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\QuickOperation.resx">
+      <DependentUpon>QuickOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\QuickSettingStatusItem.resx">
+      <DependentUpon>QuickSettingStatusItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\StationNews.resx">
+      <DependentUpon>StationNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\SystemNotice.resx">
+      <DependentUpon>SystemNotice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Misc\TabWelcomeContent.resx">
+      <DependentUpon>TabWelcomeContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\FuncOption.resx">
+      <DependentUpon>FuncOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\GenericOption.resx">
+      <DependentUpon>GenericOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\MailConfig.resx">
+      <DependentUpon>MailConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\MediaOption.resx">
+      <DependentUpon>MediaOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\NetworkConfig.resx">
+      <DependentUpon>NetworkConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\QueryConfig.resx">
+      <DependentUpon>QueryConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\QueryView.resx">
+      <DependentUpon>QueryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\SubmitAutoResumeConfig.resx">
+      <DependentUpon>SubmitAutoResumeConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\SubmitOrderConfig.resx">
+      <DependentUpon>SubmitOrderConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\ThemeConfig.resx">
+      <DependentUpon>ThemeConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\UIConfig.resx">
+      <DependentUpon>UIConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Option\WebNotificationConfig.resx">
+      <DependentUpon>WebNotificationConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Order\OrderList.resx">
+      <DependentUpon>OrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Order\OrderPanel.resx">
+      <DependentUpon>OrderPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Passenger\PassengerList.resx">
+      <DependentUpon>PassengerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Passenger\PassengerPanel.resx">
+      <DependentUpon>PassengerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Passenger\PassengerSelector.resx">
+      <DependentUpon>PassengerSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\PlatformUI\VcConfig.resx">
+      <DependentUpon>VcConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\QueryManager\QmPanel.resx">
+      <DependentUpon>QmPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\AddSeatClass.resx">
+      <DependentUpon>AddSeatClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\AddTrainCode.resx">
+      <DependentUpon>AddTrainCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\AlternativeDateSetting.resx">
+      <DependentUpon>AlternativeDateSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\AutoSubmitSetting.resx">
+      <DependentUpon>AutoSubmitSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\BackupOrderCart.resx">
+      <DependentUpon>BackupOrderCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\QueryConfiguration.resx">
+      <DependentUpon>QueryConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\QueryPage.resx">
+      <DependentUpon>QueryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\QueryParams.resx">
+      <DependentUpon>QueryParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\QueryResult.resx">
+      <DependentUpon>QueryResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\SeatRuleEditor.resx">
+      <DependentUpon>SeatRuleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\SeatRuleEditors\MinimumTicketRuleEditor.resx">
+      <DependentUpon>MinimumTicketRuleEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\SeatSubTypeSequenceSetting.resx">
+      <DependentUpon>SeatSubTypeSequenceSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\SellTimeTip.resx">
+      <DependentUpon>SellTimeTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\TrainPrompt.resx">
+      <DependentUpon>TrainPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Query\TrainStopQuery.resx">
+      <DependentUpon>TrainStopQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Vc\SlideVcControl.resx">
+      <DependentUpon>SlideVcControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Vc\TouchClickSimple.resx">
+      <DependentUpon>TouchClickSimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Vc\TouchClickVc.resx">
+      <DependentUpon>TouchClickVc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\AccountMobileCheck.resx">
+      <DependentUpon>AccountMobileCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\LoginConflict.resx">
+      <DependentUpon>LoginConflict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\MobileNotChecked.resx">
+      <DependentUpon>MobileNotChecked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\ModifyMobileCode.resx">
+      <DependentUpon>ModifyMobileCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\ModifyPassword.resx">
+      <DependentUpon>ModifyPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Account\QrLogin.resx">
+      <DependentUpon>QrLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\BackupOrder\PayBackupOrderDlg.resx">
+      <DependentUpon>PayBackupOrderDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\BackupOrder\SubmitBackupOrderDlg.resx">
+      <DependentUpon>SubmitBackupOrderDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Common\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Common\TrainSelector.resx">
+      <DependentUpon>TrainSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Common\YetAnotherWaitingDialog.resx">
+      <DependentUpon>YetAnotherWaitingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\ConfigCenter.resx">
+      <DependentUpon>ConfigCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\EmbedBrowser.resx">
+      <DependentUpon>EmbedBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Misc\AboutMe.resx">
+      <DependentUpon>AboutMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Misc\InitializingUserPage.resx">
+      <DependentUpon>InitializingUserPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Misc\Startup.resx">
+      <DependentUpon>Startup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\BatchQueryTip.resx">
+      <DependentUpon>BatchQueryTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\LocalTimeDifferenceTooLarge.resx">
+      <DependentUpon>LocalTimeDifferenceTooLarge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\MsgFrom12306.resx">
+      <DependentUpon>MsgFrom12306.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\NotForSaleNotification.resx">
+      <DependentUpon>NotForSaleNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\NotificationBase.resx">
+      <DependentUpon>NotificationBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\ServerIpQuickFix.resx">
+      <DependentUpon>ServerIpQuickFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\SoftwareConflictionWarning.resx">
+      <DependentUpon>SoftwareConflictionWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\SystemClosed.resx">
+      <DependentUpon>SystemClosed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\SystemSupportError.resx">
+      <DependentUpon>SystemSupportError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\UserNotVerified.resx">
+      <DependentUpon>UserNotVerified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Notification\VerifyCodeRecogniseWarning.resx">
+      <DependentUpon>VerifyCodeRecogniseWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\OptionConfigForm.resx">
+      <DependentUpon>OptionConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Order\FastSubmitOrder.resx">
+      <DependentUpon>FastSubmitOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Order\OrderNotification.resx">
+      <DependentUpon>OrderNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Order\OrderQueue.resx">
+      <DependentUpon>OrderQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Order\OrderSubmitDialogUiBase.resx">
+      <DependentUpon>OrderSubmitDialogUiBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Order\PayOrder.resx">
+      <DependentUpon>PayOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Order\SubmitOrder.resx">
+      <DependentUpon>SubmitOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\OsSupport\SysErrorFound.resx">
+      <DependentUpon>SysErrorFound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Passenger\AddPassenger.resx">
+      <DependentUpon>AddPassenger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Passenger\ImportPassenger.resx">
+      <DependentUpon>ImportPassenger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Passenger\PassengerGroupManager.resx">
+      <DependentUpon>PassengerGroupManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Query\QueryManager.resx">
+      <DependentUpon>QueryManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\RequireVcCode.resx">
+      <DependentUpon>RequireVcCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\TaskDialog\ChevronButton.resx">
+      <DependentUpon>ChevronButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\TaskDialog\CommandLink.resx">
+      <DependentUpon>CommandLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\TaskDialog\TaskDialogForm.resx">
+      <DependentUpon>TaskDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Vc\SlideVcForm.resx">
+      <DependentUpon>SlideVcForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Vc\TouchClickVcSimpleForm.resx">
+      <DependentUpon>TouchClickVcSimpleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\country.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TOBA.AutoVc\TOBA.AutoVc.csproj">
+      <Project>{c356c447-289b-4912-8c2f-4151dc170f8e}</Project>
+      <Name>TOBA.AutoVc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>4.9.4</Version>
+    </PackageReference>
+    <PackageReference Include="extension.fishlee.net">
+      <Version>1.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="MsieJavaScriptEngine">
+      <Version>3.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="network.fishlee.net">
+      <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\audio\bird.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\losing.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\可爱宝宝.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\大风车 -  CCTV版.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\大风车 - 蛇精病版.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\终于等到你.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\蓝精灵 - 经典儿歌.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\蓝精灵-女声%28萌版%29.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\蓝精灵.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\music\蓝精灵2.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio\tip.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExeIcon.ico" />
+    <None Include="Resources\block_16.png" />
+    <None Include="Resources\globe_16.png" />
+    <None Include="Resources\cou_32_search.png" />
+    <None Include="Resources\letter_16.png" />
+    <None Include="Resources\warning_16.png" />
+    <None Include="Resources\tick_16.png" />
+    <None Include="Resources\search_16.png" />
+    <None Include="Resources\info_16.png" />
+    <None Include="Resources\clock_16.png" />
+    <None Include="Resources\user_16.png" />
+    <None Include="Resources\cou_16_users.png" />
+    <None Include="Resources\cou_16_protection.png" />
+    <None Include="Resources\onebit2_18_16.png" />
+    <None Include="Resources\onebit2_18_32.png" />
+    <None Include="Resources\cou_16_add.png" />
+    <None Include="Resources\label_16.png" />
+    <None Include="Resources\Tools2-16.png" />
+    <None Include="Resources\cou_16_delete.png" />
+    <None Include="Resources\cou_16_warning.png" />
+    <None Include="Resources\loading_16_3.gif" />
+    <None Include="Resources\mainForm.ico" />
+    <None Include="Resources\monitor_16.png" />
+    <None Include="Resources\cou_32_warning.png" />
+    <None Include="Resources\146.png" />
+    <None Include="Resources\alarm_clock.png" />
+    <None Include="Resources\Mute.png" />
+    <None Include="Resources\statistics_16.png" />
+    <None Include="Resources\cou_16_chart_pie.png" />
+    <None Include="Resources\home_16.png" />
+    <None Include="Resources\httpzf.js" />
+    <None Include="Resources\ion-social-github.png" />
+    <None Include="Resources\bubble_16.png" />
+    <None Include="Resources\32px_loading_1.gif" />
+    <None Include="Resources\search_magnifier.png" />
+    <None Include="Resources\cou_16_refresh.png" />
+    <None Include="Resources\pencil_16.png" />
+    <None Include="Resources\plus_16.png" />
+    <None Include="Resources\trash_16.png" />
+    <None Include="Resources\paste_plain.png" />
+    <None Include="Resources\transfer.png" />
+    <None Include="Resources\save_16.png" />
+    <None Include="Resources\16px_loading_1.gif" />
+    <None Include="Resources\cou_16_clock.png" />
+    <None Include="Resources\stop_16.png" />
+    <None Include="Resources\flag_16.png" />
+    <None Include="Resources\onebit_01.png" />
+    <None Include="Resources\xfsm-switch.png" />
+    <None Include="Resources\cou_32_accept.png" />
+    <None Include="Resources\cou_16_accept.png" />
+    <None Include="Resources\cou_16_block.png" />
+    <None Include="Resources\cou_16_unlock.png" />
+    <None Include="Resources\cou_16_info.png" />
+    <None Include="Resources\131.png" />
+    <None Include="Resources\132.png" />
+    <None Include="Resources\Security.png" />
+    <None Include="Resources\SecurityError.png" />
+    <None Include="Resources\SecurityQuestion.png" />
+    <None Include="Resources\SecuritySuccess.png" />
+    <None Include="Resources\SecurityWarning.png" />
+    <None Include="Resources\SmallError.png" />
+    <None Include="Resources\SmallInformation.png" />
+    <None Include="Resources\SmallQuestion.png" />
+    <None Include="Resources\SmallSecurity.png" />
+    <None Include="Resources\SmallSecurityError.png" />
+    <None Include="Resources\SmallSecurityQuestion.png" />
+    <None Include="Resources\SmallSecuritySucess.png" />
+    <None Include="Resources\SmallSecurityWarning.png" />
+    <None Include="Resources\SmallWarning.png" />
+    <None Include="Resources\BigError.png" />
+    <None Include="Resources\BigInformation.png" />
+    <None Include="Resources\BigQuestion.png" />
+    <None Include="Resources\BigSecurity.png" />
+    <None Include="Resources\BigSecurityError.png" />
+    <None Include="Resources\BigSecurityQuestion.png" />
+    <None Include="Resources\BigSecuritySuccess.png" />
+    <None Include="Resources\BigSecurityWarning.png" />
+    <None Include="Resources\BigWarning.png" />
+    <None Include="Resources\Error.png" />
+    <None Include="Resources\Question.png" />
+    <None Include="Resources\ArrowDisabled.png" />
+    <None Include="Resources\ArrowHovered.png" />
+    <None Include="Resources\ArrowNormal.png" />
+    <None Include="Resources\ChevronLess.png" />
+    <None Include="Resources\ChevronLessHovered.png" />
+    <None Include="Resources\ChevronLessPressed.png" />
+    <None Include="Resources\ChevronMore.png" />
+    <None Include="Resources\ChevronMoreHovered.png" />
+    <None Include="Resources\ChevronMorePressed.png" />
+    <None Include="Resources\icon_login.ico" />
+    <None Include="Resources\icon_mobile.ico" />
+    <None Include="Resources\icon_warning.ico" />
+    <None Include="Resources\id_ic.png" />
+    <None Include="Resources\id_ig.png" />
+    <None Include="Resources\id_ip.png" />
+    <None Include="Resources\id_it.png" />
+    <None Include="Resources\ie_16.png" />
+    <None Include="Resources\img_failed.png" />
+    <None Include="Resources\img_preinput.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\onebit_47.png" />
+    <None Include="Resources\UAC_32.png" />
+    <None Include="Resources\cou_64_warning.png" />
+    <None Include="Resources\warning.png" />
+    <None Include="Resources\backup.ico" />
+    <None Include="Resources\creditcard.ico" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\sina_mb_logo_16.png" />
+    <None Include="Resources\present_16.png" />
+    <None Include="Resources\accept.png" />
+    <None Include="Resources\148.png" />
+    <None Include="Resources\asset.png" />
+    <None Include="Resources\briefcase_16.png" />
+    <None Include="Resources\address_16.png" />
+    <None Include="Resources\cou_32_users.png" />
+    <None Include="Resources\Backup Green Button-16.png" />
+    <None Include="Resources\cou_32_unlock.png" />
+    <None Include="Resources\12-em-cross.png" />
+    <None Include="Resources\12-em-cross_gray.png" />
+    <None Include="Resources\calendar_16.png" />
+    <None Include="Resources\cou_32_calendar.png" />
+    <None Include="Resources\testtube_16.png" />
+    <None Include="Resources\cou_16_promotion.png" />
+    <None Include="Resources\layer_import.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\bookmark_16.png" />
+    <None Include="Resources\buy_16.png" />
+    <None Include="Resources\cleanmgr_113.png" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\cou_16_help.png" />
+    <None Include="Resources\cou_16_mail.png" />
+    <None Include="Resources\cou_16_process.png" />
+    <None Include="Resources\cou_16_rss.png" />
+    <None Include="Resources\cou_16_search.png" />
+    <None Include="Resources\cou_16_tag_blue.png" />
+    <None Include="Resources\cou_16_user.png" />
+    <None Include="Resources\cou_32_block.png" />
+    <None Include="Resources\cou_32_clock.png" />
+    <None Include="Resources\cou_32_delete.png" />
+    <None Include="Resources\cou_32_mail.png" />
+    <None Include="Resources\cou_32_next.png" />
+    <None Include="Resources\cou_32_process.png" />
+    <None Include="Resources\cou_32_promotion.png" />
+    <None Include="Resources\cou_32_refresh.png" />
+    <None Include="Resources\cou_32_rss.png" />
+    <None Include="Resources\delete_16.png" />
+    <None Include="Resources\diagram_16.png" />
+    <None Include="Resources\female.png" />
+    <None Include="Resources\folder_16.png" />
+    <None Include="Resources\gear_16.png" />
+    <None Include="Resources\HardwareChip.png" />
+    <None Include="Resources\heart_16.png" />
+    <None Include="Resources\key_16.png" />
+    <None Include="Resources\layer_export.png" />
+    <None Include="Resources\male.png" />
+    <None Include="Resources\monitor_window.png" />
+    <None Include="Resources\monitor_window_16.png" />
+    <None Include="Resources\noneedpc.png" />
+    <None Include="Resources\onebit_02.png" />
+    <None Include="Resources\onebit_04.png" />
+    <None Include="Resources\onebit_16.png" />
+    <None Include="Resources\onebit_20.png" />
+    <None Include="Resources\onebit_36.png" />
+    <None Include="Resources\onebit_49.png" />
+    <None Include="Resources\qq_16.png" />
+    <None Include="Resources\sound.png" />
+    <None Include="Resources\sound_16.png" />
+    <None Include="Resources\testtube_32.png" />
+    <None Include="Resources\tip_vcexp.png" />
+    <None Include="Resources\unknownneedpc.png" />
+    <None Include="Resources\window_new.png" />
+    <None Include="Resources\gnome-blog.png" />
+    <None Include="Resources\stock_media-pause.png" />
+    <None Include="Resources\stock_media-play.png" />
+    <None Include="Resources\loading_16.gif" />
+    <None Include="Resources\099.png" />
+    <None Include="Resources\QQ20180813110824.jpg" />
+    <None Include="Resources\shoppingcart.ico" />
+    <None Include="Resources\vc-marker.png" />
+    <None Include="Resources\Information.png" />
+    <Content Include="polipo.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\lxh_happy %282%29.gif" />
+    <None Include="Resources\lxh_happy.gif" />
+    <None Include="Resources\lxh_excite.gif" />
+    <None Include="Resources\gif_success10.jpg" />
+    <None Include="Resources\gif_success9.jpg" />
+    <None Include="Resources\gif_success6.jpg" />
+    <None Include="Resources\gif_success5.jpg" />
+    <None Include="Resources\gif_success4.jpg" />
+    <None Include="Resources\gif_success3.jpg" />
+    <None Include="Resources\gif_success2.jpg" />
+    <None Include="Resources\gif_success1.gif" />
+    <None Include="Resources\lxh_cry.gif" />
+    <None Include="Resources\gif_sad21.gif" />
+    <None Include="Resources\gif_sad20.jpg" />
+    <None Include="Resources\gif_sad19.jpg" />
+    <None Include="Resources\gif_sad18.gif" />
+    <None Include="Resources\gif_sad16.jpg" />
+    <None Include="Resources\gif_sad13.jpg" />
+    <None Include="Resources\gif_sad12.jpg" />
+    <None Include="Resources\gif_sad11.jpg" />
+    <None Include="Resources\gif_sad10.jpg" />
+    <None Include="Resources\gif_sad9.gif" />
+    <None Include="Resources\gif_sad8.png" />
+    <None Include="Resources\gif_sad7.jpg" />
+    <None Include="Resources\gif_sad6.jpg" />
+    <None Include="Resources\gif_sad5.gif" />
+    <None Include="Resources\gif_sad4.jpg" />
+    <None Include="Resources\gif_sad2.jpg" />
+    <None Include="Resources\gif_sad1.jpg" />
+    <None Include="Resources\lxh_working.gif" />
+    <None Include="Resources\lxh_99.gif" />
+    <None Include="Resources\lxh_01.gif" />
+    <None Include="Resources\gif1.gif" />
+    <None Include="Resources\gif_joke17.gif" />
+    <None Include="Resources\gif_joke16.gif" />
+    <None Include="Resources\gif_joke13.jpg" />
+    <None Include="Resources\gif_joke12.jpg" />
+    <None Include="Resources\gif_joke11.jpg" />
+    <None Include="Resources\gif_joke9.gif" />
+    <None Include="Resources\gif_joke6.gif" />
+    <None Include="Resources\gif_joke5.jpg" />
+    <None Include="Resources\gif_joke4.jpg" />
+    <None Include="Resources\gif_joke3.jpg" />
+    <None Include="Resources\gif_joke2.jpg" />
+    <None Include="Resources\gif_beg10.gif" />
+    <None Include="Resources\gif_beg8.gif" />
+    <None Include="Resources\gif_beg7.gif" />
+    <None Include="Resources\gif_beg1.gif" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

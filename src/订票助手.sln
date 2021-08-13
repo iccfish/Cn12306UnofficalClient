@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOBA.AutoVc", "TOBA.AutoVc\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOBA.AutoVc.DemoVc", "TOBA.AutoVc.Demo\TOBA.AutoVc.DemoVc.csproj", "{2167283A-3C95-4475-99BB-EE2C232CF5C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOBA", "TOBA\TOBA.csproj", "{AAE86A95-050C-4DBA-A804-C8F8152DB52C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2167283A-3C95-4475-99BB-EE2C232CF5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2167283A-3C95-4475-99BB-EE2C232CF5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2167283A-3C95-4475-99BB-EE2C232CF5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE86A95-050C-4DBA-A804-C8F8152DB52C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE86A95-050C-4DBA-A804-C8F8152DB52C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE86A95-050C-4DBA-A804-C8F8152DB52C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE86A95-050C-4DBA-A804-C8F8152DB52C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
