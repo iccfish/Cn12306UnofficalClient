@@ -1,6 +1,6 @@
 # 订票助手.NET
 
-**12306非官方客户端** 是由 [**木鱼**](https://blog.fishlee.net/) 开发的基于 .NET 4.0 的全功能、非官方客户端。  
+**12306非官方客户端** 是由 [**木鱼**](https://blog.fishlee.net/) 开发的基于 .NET 4.5 的全功能、非官方客户端。  
 
 客户端支持 .NET 4.5 以上Framework，目前仅支持Windows平台，支持 Windows 7/8/10、2008/2012/2016 以及更新的系统。
 
@@ -32,6 +32,6 @@
 
 如果觉得订票助手.NET有用，愿意请木鱼吃点零食或喝杯饮料，也感谢  [捐助助手](https://blog.iccfish.com/about/donate/)。
 
-同时，本鱼还有微信公众号， [捐助助手](https://blog.iccfish.com/about/donate/) 这个页面下面有二维码，也欢迎共筑。
+同时，本鱼还有微信公众号， [捐助助手](https://blog.iccfish.com/about/donate/) 这个页面下面有二维码，也欢迎关注。
 
 最后，[鱼的官网](https://www.fishlee.net/)在此，感谢[后花园所有QQ群](https://www.fishlee.net/about/)成员中这八年的一直相伴，愿我们彼此安好。
