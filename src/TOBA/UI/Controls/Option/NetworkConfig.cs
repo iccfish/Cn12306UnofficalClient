@@ -22,10 +22,6 @@ namespace TOBA.UI.Controls.Option
 			DisplayText = "网络设置";
 			Image = Properties.Resources.globe_16;
 			BigImage = Properties.Resources.cou_32_search;
-
-			//独立服务器查询-隐藏
-			//chkUseIndividualServer.Visible = false;
-			label10.Visible = false;
 		}
 
 		private void NetworkConfig_Load(object sender, EventArgs e)
@@ -58,7 +54,6 @@ namespace TOBA.UI.Controls.Option
 			{
 				nc.ProxyPort = (int)nudProxyPort.Value;
 			};
-			autoReloadServerCount.AddDataBinding(nc, s => s.IntValue, s => s.AutoReloadDnsLimit);
 
 			//代理服务器类型
 			cbProxyClass.AttachType = typeof(ProxyType);

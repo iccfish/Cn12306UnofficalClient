@@ -31,15 +31,11 @@ namespace TOBA.Configuration
 			_proxyUserName = "";
 			_disableCdn = true;
 			_baseUri = new Uri("https://kyfw.12306.cn/otn/");
-			_enableServerSmartChange = true;
-			_useSeperatorIpForQuery = _enableServerSmartChange;
 			_hostFailedLimit = 20;
 			_autoExcludeLongCacheHost = true;
 			_reloadVcCodeDelay = 500;
 			_ban405ReturnHost = true;
 			_checkLoginStateInterval = 15;
-			_enableAutoReloadDnsServer = true;
-			_autoReloadDnsLimit = 15;
 		}
 
 
@@ -52,16 +48,11 @@ namespace TOBA.Configuration
 		int _proxyType;
 		bool _disableCdn;
 		Uri _baseUri;
-		bool _enableServerSmartChange;
-		bool _canEnableServerSmartChange;
-		bool _useSeperatorIpForQuery;
 		int _hostFailedLimit;
 		bool _autoExcludeLongCacheHost;
 		int _reloadVcCodeDelay;
 		bool _ban405ReturnHost;
 		int _checkLoginStateInterval;
-		bool _enableAutoReloadDnsServer;
-		int _autoReloadDnsLimit;
 		static NetworkConfiguration _current;
 
 		/// <summary>
@@ -201,36 +192,6 @@ namespace TOBA.Configuration
 					return;
 				_checkLoginStateInterval = value;
 				OnPropertyChanged("CheckLoginStateInterval");
-			}
-		}
-
-		/// <summary>
-		/// 获得或设置是否允许自动刷新DNS
-		/// </summary>
-		public bool EnableAutoReloadDnsServer
-		{
-			get { return _enableAutoReloadDnsServer; }
-			set
-			{
-				if (value.Equals(_enableAutoReloadDnsServer))
-					return;
-				_enableAutoReloadDnsServer = value;
-				OnPropertyChanged("EnableAutoReloadDnsServer");
-			}
-		}
-
-		/// <summary>
-		/// 自动刷新DNS缓存阈值
-		/// </summary>
-		public int AutoReloadDnsLimit
-		{
-			get { return _autoReloadDnsLimit; }
-			set
-			{
-				if (value == _autoReloadDnsLimit)
-					return;
-				_autoReloadDnsLimit = value;
-				OnPropertyChanged("AutoReloadDnsLimit");
 			}
 		}
 

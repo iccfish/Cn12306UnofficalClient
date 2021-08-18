@@ -55,7 +55,6 @@ namespace TOBA.Configuration
 
 			var nc = NetworkConfiguration.Current;
 			nc.AutoRetryOnNetworkError = true;
-			nc.AutoReloadDnsLimit = 20;
 			nc.NetworkRetryCount = 5;
 			nc.RetrySleepTime = 200;
 			nc.DisableCdn = true;
@@ -103,7 +102,6 @@ namespace TOBA.Configuration
 
 			var nc = NetworkConfiguration.Current;
 			nc.AutoRetryOnNetworkError = true;
-			nc.AutoReloadDnsLimit = 20;
 			nc.NetworkRetryCount = 5;
 			nc.RetrySleepTime = 1000;
 			nc.DisableCdn = true;
@@ -152,7 +150,6 @@ namespace TOBA.Configuration
 
 			var nc = NetworkConfiguration.Current;
 			nc.AutoRetryOnNetworkError = true;
-			nc.AutoReloadDnsLimit = 20;
 			nc.NetworkRetryCount = 5;
 			nc.RetrySleepTime = 1000;
 			nc.DisableCdn = true;

@@ -974,22 +974,6 @@ namespace TOBA.Entity
 			}
 		}
 
-		private bool _enableSmsNotification = QueryViewConfiguration.Instance.EnableSmsNotifyDefault;
-
-		/// <summary>
-		/// 获得或设置是否短信通知
-		/// </summary>
-		public bool EnableSmsNotification
-		{
-			get => _enableSmsNotification;
-			set
-			{
-				if (value == _enableSmsNotification) return;
-				_enableSmsNotification = value;
-				OnPropertyChanged(nameof(EnableSmsNotification));
-			}
-		}
-
 		[JsonIgnore]
 		public OrderSubmitEventArgs SubmitEventArgs { get; set; }
 
