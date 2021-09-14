@@ -115,6 +115,7 @@ namespace TOBA.Account
 			form.Add("password", $"@{sm4srv.CryptoEcbBase64(Password)}");
 			form.Add("appid", "otn");
 			form.Add("answer", RandCode);
+			form.Add("checkMode", "1");
 
 			if (NeedSlideVcLogin)
 			{
