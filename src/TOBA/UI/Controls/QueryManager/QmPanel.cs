@@ -22,7 +22,6 @@ namespace TOBA.UI.Controls.QueryManager
 
 	internal partial class QmPanel : ControlBase
 	{
-		bool _allowModParams;
 		ListViewItem _nextItem;
 
 		DateTime _nextTime;
@@ -53,7 +52,6 @@ namespace TOBA.UI.Controls.QueryManager
 			lstQuery.SelectedIndexChanged += lstQuery_SelectedIndexChanged;
 			tsQuery.Enabled = false;
 			lstQuery.MouseDoubleClick += lstQuery_MouseDoubleClick;
-			tsAdd.Enabled = tsCopy.Enabled = tsClose.Enabled = _allowModParams;
 
 			//复制到其它账户
 			tsSendTo.DropDownOpening += (os, args) =>

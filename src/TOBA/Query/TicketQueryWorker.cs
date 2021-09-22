@@ -73,7 +73,7 @@ namespace TOBA.Query
 		{
 			Query = query;
 			Session = session;
-			_fillLeftTicketService = session.ServiceContainer.Resolve<IFillLeftTicketService>();
+			_fillLeftTicketService = session.ServiceContainer.ResolveOptional<IFillLeftTicketService>();
 		}
 
 		/// <summary>
@@ -229,7 +229,7 @@ namespace TOBA.Query
 			Query.HasTicket = false;
 			Query.QueryState = QueryState.Query;
 
-			_fillLeftTicketService.Init(Query);
+			_fillLeftTicketService?.Init(Query);
 
 			//页面参数
 			if (!InitQueryInfo())
@@ -509,8 +509,8 @@ namespace TOBA.Query
 			Result = result;
 
 			//填充票价
-			var priceService = AppContext.ExtensionManager.GlobalKernel.Resolve<ITicketPriceFillPrice>();
-			priceService.FillPriceAsync(Session, Query, result).Wait();
+			var priceService = AppContext.ExtensionManager.GlobalKernel.ResolveOptional<ITicketPriceFillPrice>();
+			priceService?.FillPriceAsync(Session, Query, result).Wait();
 
 			AutoSelect = Query.FindMatchedTrain(Result, out var stat);
 			AutoSelectStat = stat;

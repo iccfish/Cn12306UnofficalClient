@@ -89,24 +89,9 @@ namespace TOBA.UI.Controls.Query
 			{
 				InitUiEvents();
 				InitSleep();
-				InitOperationRules();
 			}
 		}
 
-		/// <summary>
-		/// 初始化操作授权
-		/// </summary>
-		void InitOperationRules()
-		{
-			dep.Enabled = false;
-			pFrom.Enabled = false;
-			pTo.Enabled = false;
-			pStu.Enabled = false;
-			btnExchange.Enabled = false;
-			pbPrev.Enabled = pbNext.Enabled = false;
-			pbPrev.Image = _navLeftDisabled;
-			pbNext.Image = _navRightDisabled;
-		}
 
 		void ResetButtonText()
 		{

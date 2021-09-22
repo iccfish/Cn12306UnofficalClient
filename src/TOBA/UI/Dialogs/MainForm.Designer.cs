@@ -31,11 +31,9 @@ namespace TOBA.UI.Dialogs
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.stuMute = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tsStatusServerTime = new System.Windows.Forms.ToolStripStatusLabel();
-			this.stRs = new System.Windows.Forms.ToolStripStatusLabel();
 			this.stuStatistics = new System.Windows.Forms.ToolStripDropDownButton();
 			this.stuStatisticsQuery = new System.Windows.Forms.ToolStripMenuItem();
 			this.总计调用次数ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +60,9 @@ namespace TOBA.UI.Dialogs
 			this.查票次数累计QueryCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.网络请求次数累计WebRequestCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.助手启动次数StartupCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stuAdv = new System.Windows.Forms.ToolStripDropDownButton();
+			this.stuAdvAsk = new System.Windows.Forms.ToolStripMenuItem();
+			this.stuAdvGithub = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabImgList = new System.Windows.Forms.ImageList(this.components);
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.ni = new System.Windows.Forms.NotifyIcon(this.components);
@@ -78,9 +79,7 @@ namespace TOBA.UI.Dialogs
 			this.sm = new DevComponents.DotNetBar.StyleManager(this.components);
 			this.userrelogin = new TOBA.UI.Components.Account.UserLoginComponent(this.components);
 			this.topNav1 = new TOBA.UI.Controls.MainFrame.TopNav();
-			this.stuAdv = new System.Windows.Forms.ToolStripDropDownButton();
-			this.stuAdvGithub = new System.Windows.Forms.ToolStripMenuItem();
-			this.stuAdvAsk = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.statusStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.st)).BeginInit();
 			this.st.SuspendLayout();
@@ -90,17 +89,19 @@ namespace TOBA.UI.Dialogs
 			// 
 			// statusStrip1
 			// 
+			this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
             this.stuMute,
             this.tsStatusServerTime,
-            this.stRs,
             this.stuStatistics,
             this.stuAdv});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 588);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 884);
 			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
 			this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
 			this.statusStrip1.ShowItemToolTips = true;
-			this.statusStrip1.Size = new System.Drawing.Size(1044, 23);
+			this.statusStrip1.Size = new System.Drawing.Size(1566, 32);
 			this.statusStrip1.SizingGrip = false;
 			this.statusStrip1.TabIndex = 2;
 			// 
@@ -111,23 +112,16 @@ namespace TOBA.UI.Dialogs
 			this.stuMute.IsLink = true;
 			this.stuMute.LinkColor = System.Drawing.Color.Purple;
 			this.stuMute.Name = "stuMute";
-			this.stuMute.Size = new System.Drawing.Size(48, 18);
+			this.stuMute.Size = new System.Drawing.Size(72, 25);
 			this.stuMute.Text = "静音";
 			// 
 			// tsStatusServerTime
 			// 
 			this.tsStatusServerTime.Image = global::TOBA.Properties.Resources.alarm_clock;
 			this.tsStatusServerTime.Name = "tsStatusServerTime";
-			this.tsStatusServerTime.Size = new System.Drawing.Size(132, 18);
+			this.tsStatusServerTime.Size = new System.Drawing.Size(196, 25);
 			this.tsStatusServerTime.Text = "尚未获得服务器时间";
 			this.tsStatusServerTime.ToolTipText = "服务器时间。依据网络的速度和服务器速度，此值可能会被随时修正，而且可能存在部分差异。";
-			// 
-			// stRs
-			// 
-			this.stRs.Image = global::TOBA.Properties.Resources._146;
-			this.stRs.Name = "stRs";
-			this.stRs.Size = new System.Drawing.Size(122, 18);
-			this.stRs.Text = "DNS加速初始化中";
 			// 
 			// stuStatistics
 			// 
@@ -143,7 +137,7 @@ namespace TOBA.UI.Dialogs
             this.助手启动次数StartupCountToolStripMenuItem});
 			this.stuStatistics.Image = global::TOBA.Properties.Resources.statistics_16;
 			this.stuStatistics.Name = "stuStatistics";
-			this.stuStatistics.Size = new System.Drawing.Size(61, 21);
+			this.stuStatistics.Size = new System.Drawing.Size(88, 29);
 			this.stuStatistics.Text = "统计";
 			// 
 			// stuStatisticsQuery
@@ -167,150 +161,176 @@ namespace TOBA.UI.Dialogs
             this.其它失败错误次数OtherFailedCountToolStripMenuItem});
 			this.stuStatisticsQuery.Image = global::TOBA.Properties.Resources.cou_16_chart_pie;
 			this.stuStatisticsQuery.Name = "stuStatisticsQuery";
-			this.stuStatisticsQuery.Size = new System.Drawing.Size(307, 22);
+			this.stuStatisticsQuery.Size = new System.Drawing.Size(455, 34);
 			this.stuStatisticsQuery.Text = "12306查询接口统计";
 			// 
 			// 总计调用次数ToolStripMenuItem
 			// 
 			this.总计调用次数ToolStripMenuItem.Name = "总计调用次数ToolStripMenuItem";
-			this.总计调用次数ToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.总计调用次数ToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.总计调用次数ToolStripMenuItem.Text = "总计调用次数\t\t#TotalCount#";
 			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(329, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(488, 6);
 			// 
 			// 成功次数SuccessCountToolStripMenuItem
 			// 
 			this.成功次数SuccessCountToolStripMenuItem.Name = "成功次数SuccessCountToolStripMenuItem";
-			this.成功次数SuccessCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.成功次数SuccessCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.成功次数SuccessCountToolStripMenuItem.Text = "成功次数\t\t#SuccessCount#";
 			// 
 			// 错误次数Code200CountToolStripMenuItem
 			// 
 			this.错误次数Code200CountToolStripMenuItem.Name = "错误次数Code200CountToolStripMenuItem";
-			this.错误次数Code200CountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.错误次数Code200CountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.错误次数Code200CountToolStripMenuItem.Text = "200错误次数\t\t#Code200Count#";
 			// 
 			// 错误次数Code302CountToolStripMenuItem
 			// 
 			this.错误次数Code302CountToolStripMenuItem.Name = "错误次数Code302CountToolStripMenuItem";
-			this.错误次数Code302CountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.错误次数Code302CountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.错误次数Code302CountToolStripMenuItem.Text = "302错误次数\t\t#Code302Count#";
 			// 
 			// 错误次数Code405CountToolStripMenuItem
 			// 
 			this.错误次数Code405CountToolStripMenuItem.Name = "错误次数Code405CountToolStripMenuItem";
-			this.错误次数Code405CountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.错误次数Code405CountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.错误次数Code405CountToolStripMenuItem.Text = "405错误次数 #Code405Count#";
 			// 
 			// 错误次数Code502CountToolStripMenuItem
 			// 
 			this.错误次数Code502CountToolStripMenuItem.Name = "错误次数Code502CountToolStripMenuItem";
-			this.错误次数Code502CountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.错误次数Code502CountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.错误次数Code502CountToolStripMenuItem.Text = "502错误次数 #Code502Count#";
 			// 
 			// 连接失败错误次数ConnectErrorCountToolStripMenuItem
 			// 
 			this.连接失败错误次数ConnectErrorCountToolStripMenuItem.Name = "连接失败错误次数ConnectErrorCountToolStripMenuItem";
-			this.连接失败错误次数ConnectErrorCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.连接失败错误次数ConnectErrorCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.连接失败错误次数ConnectErrorCountToolStripMenuItem.Text = "连接失败错误次数 #ConnectErrorCount#";
 			// 
 			// 查询超时错误次数TimeoutCountToolStripMenuItem
 			// 
 			this.查询超时错误次数TimeoutCountToolStripMenuItem.Name = "查询超时错误次数TimeoutCountToolStripMenuItem";
-			this.查询超时错误次数TimeoutCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.查询超时错误次数TimeoutCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.查询超时错误次数TimeoutCountToolStripMenuItem.Text = "查询超时错误次数 #TimeoutCount#";
 			// 
 			// 返回空数据次数DataEmptyCountToolStripMenuItem
 			// 
 			this.返回空数据次数DataEmptyCountToolStripMenuItem.Name = "返回空数据次数DataEmptyCountToolStripMenuItem";
-			this.返回空数据次数DataEmptyCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.返回空数据次数DataEmptyCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.返回空数据次数DataEmptyCountToolStripMenuItem.Text = "返回空数据次数 #DataEmptyCount#";
 			// 
 			// 返回错误数据次数DataExceptionCountToolStripMenuItem
 			// 
 			this.返回错误数据次数DataExceptionCountToolStripMenuItem.Name = "返回错误数据次数DataExceptionCountToolStripMenuItem";
-			this.返回错误数据次数DataExceptionCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.返回错误数据次数DataExceptionCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.返回错误数据次数DataExceptionCountToolStripMenuItem.Text = "返回错误数据次数 #DataExceptionCount#";
 			// 
 			// 空响应次数EmptyResponseCountToolStripMenuItem
 			// 
 			this.空响应次数EmptyResponseCountToolStripMenuItem.Name = "空响应次数EmptyResponseCountToolStripMenuItem";
-			this.空响应次数EmptyResponseCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.空响应次数EmptyResponseCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.空响应次数EmptyResponseCountToolStripMenuItem.Text = "空响应次数 #EmptyReponseCount#";
 			// 
 			// 其它网络错误次数NetworkErrorCountToolStripMenuItem
 			// 
 			this.其它网络错误次数NetworkErrorCountToolStripMenuItem.Name = "其它网络错误次数NetworkErrorCountToolStripMenuItem";
-			this.其它网络错误次数NetworkErrorCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.其它网络错误次数NetworkErrorCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.其它网络错误次数NetworkErrorCountToolStripMenuItem.Text = "其它网络错误次数 #NetworkErrorCount#";
 			// 
 			// 接口变更次数QueryInterfaceChangeCountToolStripMenuItem
 			// 
 			this.接口变更次数QueryInterfaceChangeCountToolStripMenuItem.Name = "接口变更次数QueryInterfaceChangeCountToolStripMenuItem";
-			this.接口变更次数QueryInterfaceChangeCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.接口变更次数QueryInterfaceChangeCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.接口变更次数QueryInterfaceChangeCountToolStripMenuItem.Text = "接口变更次数 #QueryInterfaceChangeCount#";
 			// 
 			// 返回查询失败次数ResultFailedCountToolStripMenuItem
 			// 
 			this.返回查询失败次数ResultFailedCountToolStripMenuItem.Name = "返回查询失败次数ResultFailedCountToolStripMenuItem";
-			this.返回查询失败次数ResultFailedCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.返回查询失败次数ResultFailedCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.返回查询失败次数ResultFailedCountToolStripMenuItem.Text = "返回查询失败次数 #ResultFailedCount#";
 			// 
 			// 其它失败错误次数OtherFailedCountToolStripMenuItem
 			// 
 			this.其它失败错误次数OtherFailedCountToolStripMenuItem.Name = "其它失败错误次数OtherFailedCountToolStripMenuItem";
-			this.其它失败错误次数OtherFailedCountToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+			this.其它失败错误次数OtherFailedCountToolStripMenuItem.Size = new System.Drawing.Size(491, 34);
 			this.其它失败错误次数OtherFailedCountToolStripMenuItem.Text = "其它失败错误次数 #OtherFailedCount#";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(304, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(452, 6);
 			// 
 			// 助手总运行时间RunningTimeToolStripMenuItem
 			// 
 			this.助手总运行时间RunningTimeToolStripMenuItem.Name = "助手总运行时间RunningTimeToolStripMenuItem";
-			this.助手总运行时间RunningTimeToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.助手总运行时间RunningTimeToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.助手总运行时间RunningTimeToolStripMenuItem.Text = "助手总运行时间\t\t#RunningTime#";
 			// 
 			// 登录次数累计LoginCountToolStripMenuItem
 			// 
 			this.登录次数累计LoginCountToolStripMenuItem.Name = "登录次数累计LoginCountToolStripMenuItem";
-			this.登录次数累计LoginCountToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.登录次数累计LoginCountToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.登录次数累计LoginCountToolStripMenuItem.Text = "登录次数累计\t\t#LoginCount#";
 			// 
 			// 成功订票次数累计SubmitSuccessCountToolStripMenuItem
 			// 
 			this.成功订票次数累计SubmitSuccessCountToolStripMenuItem.Name = "成功订票次数累计SubmitSuccessCountToolStripMenuItem";
-			this.成功订票次数累计SubmitSuccessCountToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.成功订票次数累计SubmitSuccessCountToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.成功订票次数累计SubmitSuccessCountToolStripMenuItem.Text = "成功订票次数累计\t\t#SubmitSuccessCount#";
 			// 
 			// 提交订单次数累计SubmitCountToolStripMenuItem
 			// 
 			this.提交订单次数累计SubmitCountToolStripMenuItem.Name = "提交订单次数累计SubmitCountToolStripMenuItem";
-			this.提交订单次数累计SubmitCountToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.提交订单次数累计SubmitCountToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.提交订单次数累计SubmitCountToolStripMenuItem.Text = "提交订单次数累计\t\t#SubmitCount#";
 			// 
 			// 查票次数累计QueryCountToolStripMenuItem
 			// 
 			this.查票次数累计QueryCountToolStripMenuItem.Name = "查票次数累计QueryCountToolStripMenuItem";
-			this.查票次数累计QueryCountToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.查票次数累计QueryCountToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.查票次数累计QueryCountToolStripMenuItem.Text = "查票次数累计\t\t#QueryCount#";
 			// 
 			// 网络请求次数累计WebRequestCountToolStripMenuItem
 			// 
 			this.网络请求次数累计WebRequestCountToolStripMenuItem.Name = "网络请求次数累计WebRequestCountToolStripMenuItem";
-			this.网络请求次数累计WebRequestCountToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.网络请求次数累计WebRequestCountToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.网络请求次数累计WebRequestCountToolStripMenuItem.Text = "网络请求次数累计\t\t#WebRequestCount#";
 			// 
 			// 助手启动次数StartupCountToolStripMenuItem
 			// 
 			this.助手启动次数StartupCountToolStripMenuItem.Name = "助手启动次数StartupCountToolStripMenuItem";
-			this.助手启动次数StartupCountToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+			this.助手启动次数StartupCountToolStripMenuItem.Size = new System.Drawing.Size(455, 34);
 			this.助手启动次数StartupCountToolStripMenuItem.Text = "助手启动次数累计\t\t#StartupCount#";
+			// 
+			// stuAdv
+			// 
+			this.stuAdv.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stuAdvAsk,
+            this.stuAdvGithub});
+			this.stuAdv.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.stuAdv.ForeColor = System.Drawing.Color.Green;
+			this.stuAdv.Image = global::TOBA.Properties.Resources.info_16;
+			this.stuAdv.Name = "stuAdv";
+			this.stuAdv.Size = new System.Drawing.Size(126, 29);
+			this.stuAdv.Text = "意见反馈";
+			// 
+			// stuAdvAsk
+			// 
+			this.stuAdvAsk.Image = global::TOBA.Properties.Resources.bubble_16;
+			this.stuAdvAsk.Name = "stuAdvAsk";
+			this.stuAdvAsk.Size = new System.Drawing.Size(313, 34);
+			this.stuAdvAsk.Text = "订票助手.NET论坛";
+			// 
+			// stuAdvGithub
+			// 
+			this.stuAdvGithub.Image = global::TOBA.Properties.Resources.ion_social_github;
+			this.stuAdvGithub.Name = "stuAdvGithub";
+			this.stuAdvGithub.Size = new System.Drawing.Size(313, 34);
+			this.stuAdvGithub.Text = "GITHUB (技术性，英文)";
 			// 
 			// tabImgList
 			// 
@@ -395,14 +415,15 @@ namespace TOBA.UI.Dialogs
 			this.st.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.st.FixedTabSize = new System.Drawing.Size(180, 0);
 			this.st.ImageList = this.tabImgList;
-			this.st.Location = new System.Drawing.Point(0, 43);
+			this.st.Location = new System.Drawing.Point(0, 64);
+			this.st.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.st.Name = "st";
 			this.st.ReorderTabsEnabled = true;
-			this.st.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.st.SelectedTabFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.st.SelectedTabIndex = 0;
-			this.st.Size = new System.Drawing.Size(1044, 545);
+			this.st.Size = new System.Drawing.Size(1566, 820);
 			this.st.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Left;
-			this.st.TabFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.st.TabFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.st.TabHorizontalSpacing = 10;
 			this.st.TabIndex = 4;
 			this.st.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -415,9 +436,10 @@ namespace TOBA.UI.Dialogs
 			// 
 			this.superTabControlPanel2.Controls.Add(this.tabWelcomeContent1);
 			this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.superTabControlPanel2.Location = new System.Drawing.Point(182, 0);
+			this.superTabControlPanel2.Location = new System.Drawing.Point(183, 0);
+			this.superTabControlPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.superTabControlPanel2.Name = "superTabControlPanel2";
-			this.superTabControlPanel2.Size = new System.Drawing.Size(862, 545);
+			this.superTabControlPanel2.Size = new System.Drawing.Size(1383, 820);
 			this.superTabControlPanel2.TabIndex = 2;
 			this.superTabControlPanel2.TabItem = this.stHome;
 			// 
@@ -426,8 +448,9 @@ namespace TOBA.UI.Dialogs
 			this.tabWelcomeContent1.BackColor = System.Drawing.SystemColors.Window;
 			this.tabWelcomeContent1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabWelcomeContent1.Location = new System.Drawing.Point(0, 0);
+			this.tabWelcomeContent1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.tabWelcomeContent1.Name = "tabWelcomeContent1";
-			this.tabWelcomeContent1.Size = new System.Drawing.Size(862, 545);
+			this.tabWelcomeContent1.Size = new System.Drawing.Size(1383, 820);
 			this.tabWelcomeContent1.TabIndex = 0;
 			// 
 			// stHome
@@ -444,9 +467,10 @@ namespace TOBA.UI.Dialogs
 			// 
 			this.superTabControlPanel4.Controls.Add(this.sysLogPanel1);
 			this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.superTabControlPanel4.Location = new System.Drawing.Point(182, 0);
+			this.superTabControlPanel4.Location = new System.Drawing.Point(273, 0);
+			this.superTabControlPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.superTabControlPanel4.Name = "superTabControlPanel4";
-			this.superTabControlPanel4.Size = new System.Drawing.Size(862, 588);
+			this.superTabControlPanel4.Size = new System.Drawing.Size(1293, 882);
 			this.superTabControlPanel4.TabIndex = 0;
 			this.superTabControlPanel4.TabItem = this.stSysLog;
 			this.superTabControlPanel4.Visible = false;
@@ -455,10 +479,12 @@ namespace TOBA.UI.Dialogs
 			// 
 			this.sysLogPanel1.BackColor = System.Drawing.SystemColors.Window;
 			this.sysLogPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.sysLogPanel1.Image = null;
 			this.sysLogPanel1.Location = new System.Drawing.Point(0, 0);
+			this.sysLogPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
 			this.sysLogPanel1.Name = "sysLogPanel1";
-			this.sysLogPanel1.Padding = new System.Windows.Forms.Padding(3);
-			this.sysLogPanel1.Size = new System.Drawing.Size(862, 588);
+			this.sysLogPanel1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.sysLogPanel1.Size = new System.Drawing.Size(1293, 882);
 			this.sysLogPanel1.TabIndex = 0;
 			// 
 			// stSysLog
@@ -486,45 +512,27 @@ namespace TOBA.UI.Dialogs
 			// 
 			this.topNav1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.topNav1.Location = new System.Drawing.Point(0, 0);
+			this.topNav1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
 			this.topNav1.Name = "topNav1";
-			this.topNav1.Size = new System.Drawing.Size(1044, 43);
+			this.topNav1.Size = new System.Drawing.Size(1566, 64);
 			this.topNav1.TabIndex = 5;
 			// 
-			// stuAdv
+			// toolStripStatusLabel1
 			// 
-			this.stuAdv.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stuAdvAsk,
-            this.stuAdvGithub});
-			this.stuAdv.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.stuAdv.ForeColor = System.Drawing.Color.Green;
-			this.stuAdv.Image = global::TOBA.Properties.Resources.info_16;
-			this.stuAdv.Name = "stuAdv";
-			this.stuAdv.Size = new System.Drawing.Size(85, 21);
-			this.stuAdv.Text = "意见反馈";
-			// 
-			// stuAdvGithub
-			// 
-			this.stuAdvGithub.Image = global::TOBA.Properties.Resources.ion_social_github;
-			this.stuAdvGithub.Name = "stuAdvGithub";
-			this.stuAdvGithub.Size = new System.Drawing.Size(210, 22);
-			this.stuAdvGithub.Text = "GITHUB (技术性，英文)";
-			// 
-			// stuAdvAsk
-			// 
-			this.stuAdvAsk.Image = global::TOBA.Properties.Resources.bubble_16;
-			this.stuAdvAsk.Name = "stuAdvAsk";
-			this.stuAdvAsk.Size = new System.Drawing.Size(210, 22);
-			this.stuAdvAsk.Text = "订票助手.NET论坛";
+			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+			this.toolStripStatusLabel1.Size = new System.Drawing.Size(1015, 25);
+			this.toolStripStatusLabel1.Spring = true;
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1044, 611);
+			this.ClientSize = new System.Drawing.Size(1566, 916);
 			this.Controls.Add(this.st);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.topNav1);
 			this.DoubleBuffered = true;
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "订票助手.NET";
@@ -568,7 +576,6 @@ namespace TOBA.UI.Dialogs
 		private Controls.Misc.TabWelcomeContent tabWelcomeContent1;
 		private DevComponents.DotNetBar.StyleManager sm;
 		private Components.Account.UserLoginComponent userrelogin;
-		private System.Windows.Forms.ToolStripStatusLabel stRs;
 		private System.Windows.Forms.ToolStripMenuItem stuStatisticsQuery;
 		private System.Windows.Forms.ToolStripMenuItem 总计调用次数ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -591,5 +598,6 @@ namespace TOBA.UI.Dialogs
 		private System.Windows.Forms.ToolStripDropDownButton stuAdv;
 		private System.Windows.Forms.ToolStripMenuItem stuAdvAsk;
 		private System.Windows.Forms.ToolStripMenuItem stuAdvGithub;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 	}
 }

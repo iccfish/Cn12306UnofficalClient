@@ -113,10 +113,10 @@ namespace TOBA.UI.Controls
 		{
 			if (yesNo)
 			{
-				return MessageBox.Show(this, "确认", msg, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+				return MessageBox.Show(this, msg, "确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
 			}
 
-			return MessageBox.Show(this, "确认", msg, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
+			return MessageBox.Show(this, msg, "确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK;
 		}
 
 		/// <summary>

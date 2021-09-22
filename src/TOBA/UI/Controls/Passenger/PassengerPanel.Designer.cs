@@ -66,14 +66,14 @@
 			// 
 			this.list.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
 			this.list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colName,
-            this.colType,
-            this.colIdType,
-            this.colId,
-            this.colMobile,
-            this.colStatus,
-            this.colDeleteMsg,
-            this.colMessage});
+			this.colName,
+			this.colType,
+			this.colIdType,
+			this.colId,
+			this.colMobile,
+			this.colStatus,
+			this.colDeleteMsg,
+			this.colMessage});
 			this.list.DisabledBackColor = System.Drawing.Color.Empty;
 			this.list.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.list.FullRowSelect = true;
@@ -176,16 +176,16 @@
 			// 
 			this.ts.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.ts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.tsFilter,
-            this.toolStripSeparator3,
-            this.tsRefresh,
-            this.toolStripSeparator2,
-            this.tsAdd,
-            this.tsEdit,
-            this.tsDelete,
-            this.toolStripSeparator1,
-            this.tsImport});
+			this.toolStripLabel1,
+			this.tsFilter,
+			this.toolStripSeparator3,
+			this.tsRefresh,
+			this.toolStripSeparator2,
+			this.tsAdd,
+			this.tsEdit,
+			this.tsDelete,
+			this.toolStripSeparator1,
+			this.tsImport});
 			this.ts.Location = new System.Drawing.Point(0, 0);
 			this.ts.Name = "ts";
 			this.ts.Size = new System.Drawing.Size(850, 25);
@@ -247,10 +247,10 @@
 			// tsImport
 			// 
 			this.tsImport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsImportDlg,
-            this.toolStripMenuItem1,
-            this.tsImportToClipboard,
-            this.tsImportToFile});
+			this.tsImportDlg,
+			this.toolStripMenuItem1,
+			this.tsImportToClipboard,
+			this.tsImportToFile});
 			this.tsImport.Image = global::TOBA.Properties.Resources.transfer;
 			this.tsImport.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsImport.Name = "tsImport";
@@ -304,7 +304,6 @@
 			this.Controls.Add(this.loadingtip);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.ts);
-			this.Enabled = false;
 			this.Name = "PassengerPanel";
 			this.Size = new System.Drawing.Size(850, 418);
 			this.panel1.ResumeLayout(false);

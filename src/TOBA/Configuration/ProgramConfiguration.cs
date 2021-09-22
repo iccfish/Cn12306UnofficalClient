@@ -47,7 +47,7 @@ namespace TOBA.Configuration
 		WebBrowserInfo _submitOrderBrowser;
 		eTabStripAlignment? _mainTabPosition;
 		Color? _globalColorHint;
-		eStyle? _dnbGlobalStyle = eStyle.Office2016;
+		eStyle? _dnbGlobalStyle = eStyle.Office2010Blue;
 		bool _autoReloginAfterLogout;
 		int _maxReloginCount;
 		bool _autoShowLoginDialog = true;
