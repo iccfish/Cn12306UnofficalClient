@@ -116,6 +116,10 @@ namespace TOBA.Query.Entity
 			cq.exchange_train_flag = cm[36];
 			cq.AllowBackup = cm[37] == "1";
 
+            var flags = (cm[46] ?? "").Split('#');
+            cq.IsSmartD = flags[0].StartsWith("5");
+            cq.IsFuXing = flags.Length > 1 && flags[1] == "1";
+            cq.IsQuiet  = flags.Length > 2 && flags[2].Contains("Q");
 			//部分数据兼容修复
 			cq.start_station_name = ParamData.GetStationNameByCode(cq.start_station_telecode);
 			cq.end_station_name = ParamData.GetStationNameByCode(cq.end_station_telecode);

@@ -545,6 +545,8 @@ namespace TOBA.UI.Controls.Query
 			this.imglist.Images.SetKeyName(12, "l");
 			this.imglist.Images.SetKeyName(13, "i");
 			this.imglist.Images.SetKeyName(14, "y");
+			this.imglist.Images.SetKeyName(15, "fx");
+			this.imglist.Images.SetKeyName(16, "zn");
 			// 
 			// QueryResult
 			// 

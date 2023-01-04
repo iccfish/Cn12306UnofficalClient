@@ -785,13 +785,7 @@ namespace TOBA.WebLib
 		/// <param name="extraRequestInfo">额外的请求数据信息</param>
 		/// <typeparam name="T"></typeparam>
 		/// <returns></returns>
-		public override HttpResponseContent GetPreferedResponseType<T>(HttpContext ctx, EventHandler<ResponseStreamContent.RequireProcessStreamEventArgs> streamInvoker = null, T result = default(T), Stream targetStream = null, string saveToFilePath = null, ExtraRequestInfo extraRequestInfo = null)
-		{
-			if (typeof(T) == typeof(string))
-				return new StringResponseWrapper(ctx, this);
 
-			return base.GetPreferedResponseType(ctx, streamInvoker, result, targetStream, saveToFilePath);
-		}
 
 		/// <summary>
 		/// 启用跟踪

@@ -58,7 +58,10 @@ namespace TOBA.Query.Entity
 				ControlFlag = tinfo.controlled_train_flag ?? 0,
 				ControlMessage = tinfo.controlled_train_message,
 				AlmostIllegalResult = !ApiConfiguration.Instance.DisableIllegalDetect && tinfo.controlled_train_flag == null,
-				AllowBackup = tinfo.AllowBackup
+				AllowBackup         = tinfo.AllowBackup,
+				IsSmartD            = tinfo.IsSmartD,
+				IsQuiet             = tinfo.IsQuiet,
+				IsFuXing            = tinfo.IsFuXing
 			};
 			train.FromStation.DepartureTime = queryDate.Add(ParseTimeSpan(tinfo.start_time));
 			train.ToStation.ArriveTime = train.FromStation.DepartureTime.Value.Add(train.ElapsedTime);
@@ -229,6 +232,9 @@ namespace TOBA.Query.Entity
 		[JsonProperty("houbu_train_flag")]
 		[JsonConverter(typeof(JsonString2BoolConverter))]
 		public bool AllowBackup { get; set; }
+		public bool IsSmartD { get; set; }
+		public bool IsFuXing { get; set; }
+		public bool IsQuiet { get; set; }
 	}
 
 }

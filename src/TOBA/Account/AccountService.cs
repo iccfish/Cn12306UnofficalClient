@@ -49,6 +49,8 @@ namespace TOBA.Account
 		/// <returns></returns>
 		public async Task<QueryInfoResponse> GetQueryInfoResponseAsync()
 		{
+			var htmlCtx = Session.NetClient.Create<string>(HttpMethod.Get, "login/userLogin", "passport?redirect=/otn/login/userLogin");
+			await htmlCtx.SendAsync();
 			var ctx = Session.NetClient.Create<OtnWebResponse<QueryInfoResponse>>(HttpMethod.Post, "modifyUser/initQueryUserInfoApi", "view/information.html");
 			var result = await ctx.SendAsync();
 

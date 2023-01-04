@@ -249,6 +249,10 @@ namespace TOBA.Query.Entity
 				if (QueryConfiguration.Current.IgnoreTempTrainClass && (charCode == 'C' || charCode == 'G' || charCode == 'D' || charCode == 'K' || charCode == 'T' || charCode == 'Z'))
 					code = charCode;
 
+                if (s.IsFuXing)
+                    return !selectedTrains.Contains('F') && !selectedTrains.Contains('G');
+                if (s.IsSmartD)
+                    return !selectedTrains.Contains('X') && !selectedTrains.Contains('D');
 				if (code == 'G' || code == 'D' || code == 'C' || code == 'L' || code == 'Z' || code == 'K' || code == 'T') return !selectedTrains.Contains(code);
 				if (char.IsDigit(code)) return !selectedTrains.Contains('P');
 

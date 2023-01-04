@@ -323,5 +323,8 @@ namespace TOBA.Query.Entity
 		/// 车次的日期
 		/// </summary>
 		public DateTime Date { get; }
+		public bool IsSmartD { get; set; }
+		public bool IsFuXing { get; set; }
+		public bool IsQuiet { get; set; }
 	}
 }
