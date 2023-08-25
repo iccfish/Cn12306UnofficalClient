@@ -8,6 +8,7 @@ namespace TOBA.Configuration
 	using Newtonsoft.Json;
 
 	using System.IO;
+	using System.Runtime.Serialization;
 	using System.Timers;
 
 	public abstract class ConfigurationBase : INotifyPropertyChanged
@@ -21,8 +22,19 @@ namespace TOBA.Configuration
 		public ConfigurationBase()
 		{
 			AutoSave = true;
+			SuspendFlush = true;
 		}
 
+		[OnDeserializing]
+		internal void OnDeserializingMethod(StreamingContext context)
+		{
+			SuspendFlush = true;
+		}
+		[OnDeserialized]
+		internal void OnDeserializedMethod(StreamingContext context)
+		{
+			SuspendFlush = false;
+		}
 		/// <summary>
 		/// 获得或设置是否自动保存
 		/// </summary>
@@ -71,7 +83,7 @@ namespace TOBA.Configuration
 		/// </summary>
 		public virtual void Save()
 		{
-			if (FilePath.IsNullOrEmpty())
+			if (string.IsNullOrEmpty(FilePath) || SuspendFlush)
 				return;
 
 			File.WriteAllText(FilePath, JsonConvert.SerializeObject(this));

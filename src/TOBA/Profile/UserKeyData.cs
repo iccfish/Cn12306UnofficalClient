@@ -75,6 +75,17 @@ namespace TOBA.Profile
 			}
 		}
 
+		private string _idLast4;
+		public string IdLast4
+		{
+			get => _idLast4;
+			set
+			{
+				if (value == _idLast4) return;
+				_idLast4 = value;
+				OnPropertyChanged();
+			}
+		}
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		[NotifyPropertyChangedInvocator]
@@ -127,7 +138,7 @@ namespace TOBA.Profile
 				if (value.Equals(_lastLoginTime))
 					return;
 				_lastLoginTime = value;
-				OnPropertyChanged(nameof(LastLoginTime));
+				OnPropertyChanged();
 			}
 		}
 	}

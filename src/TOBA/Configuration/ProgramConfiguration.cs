@@ -642,5 +642,16 @@ namespace TOBA.Configuration
 				OnPropertyChanged(nameof(KeepLoginStateAfterRestart));
 			}
 		}
+		private bool _autoSendLoginVerifySms;
+		public bool AutoSendLoginVerifySms
+		{
+			get => _autoSendLoginVerifySms;
+			set
+			{
+				if (value == _autoSendLoginVerifySms) return;
+				_autoSendLoginVerifySms = value;
+				OnPropertyChanged(nameof(AutoSendLoginVerifySms));
+			}
+		}
 	}
 }

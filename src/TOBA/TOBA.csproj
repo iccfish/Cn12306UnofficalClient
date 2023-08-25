@@ -75,11 +75,15 @@
     <Compile Include="Account\IAccountService.cs" />
     <Compile Include="Account\ISessionLoginService.cs" />
     <Compile Include="Account\ISessionReloginService.cs" />
+    <Compile Include="Account\ISmsService.cs" />
     <Compile Include="Account\RequireSessionLoginWorker.cs" />
     <Compile Include="Account\SessionCookiesPersentator.cs" />
     <Compile Include="Account\SessionCookiesPersentatorModule.cs" />
     <Compile Include="Account\SessionLoginService.cs" />
     <Compile Include="Account\SessionReloginService.cs" />
+    <Compile Include="Account\SmsService.cs" />
+    <Compile Include="Account\SmsServiceModule.cs" />
+    <Compile Include="Account\VcType.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Assets\FreeWp8Icons_White.Designer.cs" />
     <Compile Include="Assets\SR.Designer.cs" />
@@ -762,6 +766,12 @@
     <Compile Include="UI\Controls\Vc\SlideVcControl.Designer.cs">
       <DependentUpon>SlideVcControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controls\Vc\SmsVc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Vc\SmsVc.Designer.cs">
+      <DependentUpon>SmsVc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\Vc\TouchClickSimple.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1113,6 +1123,12 @@
     <Compile Include="UI\Dialogs\TaskDialog\TaskDialogIcon.cs" />
     <Compile Include="UI\Dialogs\TaskDialog\TaskDialogLockSystemParameters.cs" />
     <Compile Include="UI\Dialogs\TaskDialog\TaskDialogResult.cs" />
+    <Compile Include="UI\Dialogs\Vc\RequestVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\Vc\RequestVerification.Designer.cs">
+      <DependentUpon>RequestVerification.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\Vc\SlideVcForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1348,6 +1364,9 @@
     <EmbeddedResource Include="UI\Controls\Vc\SlideVcControl.resx">
       <DependentUpon>SlideVcControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\Vc\SmsVc.resx">
+      <DependentUpon>SmsVc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Controls\Vc\TouchClickSimple.resx">
       <DependentUpon>TouchClickSimple.cs</DependentUpon>
     </EmbeddedResource>
@@ -1489,6 +1508,9 @@
     <EmbeddedResource Include="UI\Dialogs\TaskDialog\TaskDialogForm.resx">
       <DependentUpon>TaskDialogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\Vc\RequestVerification.resx">
+      <DependentUpon>RequestVerification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Dialogs\Vc\SlideVcForm.resx">
       <DependentUpon>SlideVcForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1522,13 +1544,13 @@
       <Version>4.9.4</Version>
     </PackageReference>
     <PackageReference Include="extension.fishlee.net">
-      <Version>1.6.3</Version>
+      <Version>1.6.6</Version>
     </PackageReference>
     <PackageReference Include="MsieJavaScriptEngine">
       <Version>3.0.8</Version>
     </PackageReference>
     <PackageReference Include="network.fishlee.net">
-      <Version>2.3.1</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>

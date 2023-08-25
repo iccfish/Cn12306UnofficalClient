@@ -60,9 +60,7 @@ namespace TOBA.UI.Dialogs
 			this.查票次数累计QueryCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.网络请求次数累计WebRequestCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.助手启动次数StartupCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.stuAdv = new System.Windows.Forms.ToolStripDropDownButton();
-			this.stuAdvAsk = new System.Windows.Forms.ToolStripMenuItem();
-			this.stuAdvGithub = new System.Windows.Forms.ToolStripMenuItem();
+			this.stuAdv = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabImgList = new System.Windows.Forms.ImageList(this.components);
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.ni = new System.Windows.Forms.NotifyIcon(this.components);
@@ -308,29 +306,12 @@ namespace TOBA.UI.Dialogs
 			// 
 			// stuAdv
 			// 
-			this.stuAdv.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stuAdvAsk,
-            this.stuAdvGithub});
 			this.stuAdv.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.stuAdv.ForeColor = System.Drawing.Color.Green;
-			this.stuAdv.Image = global::TOBA.Properties.Resources.info_16;
+			this.stuAdv.Image = global::TOBA.Properties.Resources.ion_social_github;
 			this.stuAdv.Name = "stuAdv";
 			this.stuAdv.Size = new System.Drawing.Size(126, 29);
-			this.stuAdv.Text = "意见反馈";
-			// 
-			// stuAdvAsk
-			// 
-			this.stuAdvAsk.Image = global::TOBA.Properties.Resources.bubble_16;
-			this.stuAdvAsk.Name = "stuAdvAsk";
-			this.stuAdvAsk.Size = new System.Drawing.Size(313, 34);
-			this.stuAdvAsk.Text = "订票助手.NET论坛";
-			// 
-			// stuAdvGithub
-			// 
-			this.stuAdvGithub.Image = global::TOBA.Properties.Resources.ion_social_github;
-			this.stuAdvGithub.Name = "stuAdvGithub";
-			this.stuAdvGithub.Size = new System.Drawing.Size(313, 34);
-			this.stuAdvGithub.Text = "GITHUB (技术性，英文)";
+			this.stuAdv.Text = "GITHUB";
 			// 
 			// tabImgList
 			// 
@@ -595,9 +576,7 @@ namespace TOBA.UI.Dialogs
 		private System.Windows.Forms.ToolStripMenuItem 其它失败错误次数OtherFailedCountToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private Controls.MainFrame.TopNav topNav1;
-		private System.Windows.Forms.ToolStripDropDownButton stuAdv;
-		private System.Windows.Forms.ToolStripMenuItem stuAdvAsk;
-		private System.Windows.Forms.ToolStripMenuItem stuAdvGithub;
+		private System.Windows.Forms.ToolStripMenuItem stuAdv;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 	}
 }

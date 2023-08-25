@@ -88,6 +88,10 @@ namespace TOBA.Account
 		string CfSessionId { get; set; }
 		string Sig { get; set; }
 
-		Task<bool> CompleteSlideVcAsync();
+		bool NeedVcLogin { get; set; }
+		bool NeedSmsLogin { get; }
+		Task<bool> CompleteVcAsync();
+		DateTime SmsTime { get; set; }
+		VcType VcType { get; set; }
 	}
 }

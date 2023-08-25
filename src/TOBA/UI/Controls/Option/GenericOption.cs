@@ -39,6 +39,7 @@ namespace TOBA.UI.Controls.Option
 			chkAutoShowLoginDlg.AddDataBinding(c, s => s.Checked, s => s.AutoShowLoginDialog);
 			chkKeepQuery.AddDataBinding(c, s => s.Checked, s => s.KeepQueryStateAfterRestart);
 			chkKeepLogin.AddDataBinding(c, s => s.Checked, s => s.KeepLoginStateAfterRestart);
+			chkAutoSendSms.AddDataBinding(c, s => s.Checked, s => s.AutoSendLoginVerifySms);
 
 			chkConflictLogin.Enabled = false;
 		}

@@ -520,8 +520,7 @@ namespace TOBA.UI.Dialogs
 			//TODO 处理注册
 
 			//状态栏
-			stuAdvGithub.Click += (_, __) => Shell.StartUrl("https://github.com/iccfish/Cn12306UnofficalClient/issues");
-			stuAdvAsk.Click += (_, __) => Shell.StartUrl("https://forum.iccfish.com/forum.php?gid=1");
+			stuAdv.Click += (_, __) => Shell.StartUrl("https://github.com/iccfish/Cn12306UnofficalClient/issues");
 
 			stuMute.Visible = false;
 

@@ -17,11 +17,14 @@ namespace TOBA.UI.Controls
 			if (!Program.IsRunning)
 				return;
 
-			AppContext.MainForm.IsWindowVisibleChanged += MainForm_IsWindowVisibleChanged;
-			Disposed += (s, e) =>
-						{
-							AppContext.MainForm.IsWindowVisibleChanged -= MainForm_IsWindowVisibleChanged;
-						};
+			if (AppContext.MainForm != null)
+			{
+				AppContext.MainForm.IsWindowVisibleChanged += MainForm_IsWindowVisibleChanged;
+				Disposed += (s, e) =>
+				{
+					AppContext.MainForm.IsWindowVisibleChanged -= MainForm_IsWindowVisibleChanged;
+				};
+			}
 		}
 
 		/// <summary>

@@ -47,6 +47,7 @@ namespace TOBA.UI.Controls.Option
 			this.chkKeepQuery = new System.Windows.Forms.CheckBox();
 			this.chkKeepLogin = new System.Windows.Forms.CheckBox();
 			this.chkNotifyIfNotMobileChecked = new System.Windows.Forms.CheckBox();
+			this.chkAutoSendSms = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.nudCheckLoginStateInterval)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudMaxTryReloginCount)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -198,6 +199,7 @@ namespace TOBA.UI.Controls.Option
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.chkAutoSendSms);
 			this.panel1.Controls.Add(this.chkKeepQuery);
 			this.panel1.Controls.Add(this.chkKeepLogin);
 			this.panel1.Controls.Add(this.label1);
@@ -253,6 +255,14 @@ namespace TOBA.UI.Controls.Option
 			this.chkNotifyIfNotMobileChecked.TabIndex = 7;
 			this.chkNotifyIfNotMobileChecked.Text = "如果手机号码没有通过核验，请通知我";
 			this.chkNotifyIfNotMobileChecked.UseVisualStyleBackColor = true;
+			this.chkAutoSendSms.AutoSize = true;
+			this.chkAutoSendSms.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.chkAutoSendSms.Location = new System.Drawing.Point(340, 33);
+			this.chkAutoSendSms.Name = "chkAutoSendSms";
+			this.chkAutoSendSms.Size = new System.Drawing.Size(171, 21);
+			this.chkAutoSendSms.TabIndex = 13;
+			this.chkAutoSendSms.Text = "需要短信验证码时自动发送";
+			this.chkAutoSendSms.UseVisualStyleBackColor = true;
 			// 
 			// GenericOption
 			// 
@@ -288,5 +298,6 @@ namespace TOBA.UI.Controls.Option
 		private System.Windows.Forms.CheckBox chkNotifyIfNotMobileChecked;
 		private System.Windows.Forms.CheckBox chkKeepQuery;
 		private System.Windows.Forms.CheckBox chkKeepLogin;
+		private System.Windows.Forms.CheckBox chkAutoSendSms;
 	}
 }

@@ -329,6 +329,11 @@ namespace TOBA.Configuration
 		public int SystemBusyRecordCount { get; set; } = 10;
 
 		public int SystemBusyWarningLimit { get; set; } = 6;
+		
+		/// <summary>
+		/// 短信验证码等待起效时间
+		/// </summary>
+		public int SmsVerificationTimeWait { get; set; } = 5000;
 
 		/// <summary>
 		/// Gets or sets the system open time.

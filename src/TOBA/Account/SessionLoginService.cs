@@ -26,6 +26,7 @@ namespace TOBA.Account
 		private Dictionary<string, string> _passportInfo;
 
 		public event EventHandler StateChanged;
+		public bool NeedVcLogin { get; set; } = false;
 
 		/// <summary>
 		/// 引发 <see cref="StateChanged"/> 事件
@@ -42,7 +43,7 @@ namespace TOBA.Account
 			SlideVcToken = null;
 
 			//var result = await Session.NetClient.VerifyRandCodeAsync(RandCodeType.SjRand, RandCode, null, _ => State = $"[{_}] 正在检查验证码……").ConfigureAwait(true);
-			if (Session.HttpConf.IsLoginPassCode)
+			if (NeedVcLogin)
 			{
 				var result = await Session.NetClient.RunRequestLoopAsync(
 						_ =>
@@ -103,51 +104,91 @@ namespace TOBA.Account
 					return false;
 			}
 
+			if (!await CheckLoginVerify())
+				return false;
+			if (!NeedSlideVcLogin && !NeedSmsLogin)
 			return await WebLoginAsync();
+			return false;
 		}
 
+		async Task<bool> CheckLoginVerify()
+		{
+			var ctx = Session.NetClient.Post("/passport/web/checkLoginVerify", new { username = UserName, appid = "otn" }, result: new { result_code = 0, result_message = "", login_check_code = 0 });
+			await ctx.SendAsync();
+			if (!ctx.IsValid())
+			{
+				State = ctx.GetExceptionMessage("[LF-CLV] 登录失败，请重试(无法拉取验证方式)");
+				return false;
+			}
+			var result = ctx.Result;
+			NeedSlideVcLogin = result.login_check_code is 1 or 2;
+			NeedSmsLogin     = result.login_check_code is 1 or 3;
+			if (NeedSlideVcLogin)
+			{
+				var slideSvc = Session.ServiceContainer.Resolve<ISlideVcService>();
+				var (need, token) = await slideSvc.GetSlideToken(UserName, NeedSlideVcLogin);
+				if (need == null)
+				{
+					State = "[LOGIN_SLIDE_TOKEN_FAILED] 滑动验证码加载失败";
+				}
+				else
+				{
+					SlideVcToken     = token;
+					NeedSlideVcLogin = need.Value;
+				}
+			}
+			return true;
+		}
 		async Task<bool> WebLoginAsync()
 		{
 			var sm4srv = AppContext.ExtensionManager.GlobalKernel.Resolve<ISm4CryptoService>();
 
 			var form = new Dictionary<string, string>();
+			form.Add("appid",    "otn");
 			form.Add("username", UserName);
 			form.Add("password", $"@{sm4srv.CryptoEcbBase64(Password)}");
-			form.Add("appid", "otn");
+			if (NeedSmsLogin)
+				form.Add("randCode", RandCode);
+			else if (!RandCode.IsNullOrEmpty())
 			form.Add("answer", RandCode);
-			form.Add("checkMode", "1");
+			form.Add("checkMode", VcType == VcType.None ? "" : (int)VcType + "");
 
-			if (NeedSlideVcLogin)
-			{
-				form["sessionId"] = CfSessionId;
-				form["sig"] = Sig;
-				form["if_check_slide_passcode_token"] = SlideVcToken;
-				form["scene"] = "nc_login";
-			}
+			form["sessionId"]                     = CfSessionId  ?? "";
+			form["sig"]                           = Sig          ?? "";
+			form["if_check_slide_passcode_token"] = SlideVcToken ?? "";
+			form["scene"]                         = NeedSlideVcLogin ? "nc_login" : "";
 
 			//form["randCode_validate"] = Utility.CreateCaptchaValidate(vccode);
 			if (Session.DynamicJsData != null)
 				form[Session.DynamicJsData.Key] = Session.DynamicJsData.EncodedValue;
-			var context = await Session.NetClient.RunRequestLoopAsync(_ => Session.NetClient.Create<string>(
+			if (VcType is VcType.Sms && (DateTime.Now - SmsTime).TotalMilliseconds < ApiConfiguration.Instance.SmsVerificationTimeWait)
+			{
+				var waitTime = (int)((DateTime.Now - SmsTime).TotalMilliseconds - ApiConfiguration.Instance.SmsVerificationTimeWait);
+				if (waitTime > 0)
+					await Task.Delay(waitTime);
+			}
+			var context = await Session.NetClient.RunRequestLoopAsync(
+					_ => Session.NetClient.Create<string>(
 						HttpMethod.Post,
 						"/passport/web/login",
 						"login/init",
 						form),
-					_ => State = $"[{_}] 正在登录中……").
-				ConfigureAwait(true);
-			if (context == null || !context.IsSuccess)
+					_ => State = $"[{_}] 正在登录中……")
+				.ConfigureAwait(true);
+			if (!context.IsValid())
 			{
 				State = context.GetExceptionMessage("登录失败，请重试(提交登录请求)");
 				return false;
 			}
 
-			var loginResult = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(context.Result,
+			var loginResult = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType(
+				context.Result,
 				new
 				{
 					result_message = "",
-					result_code = 0,
-					uamtk = "",
-					mobile = "",
+					result_code    = 0,
+					uamtk          = "",
+					mobile         = ""
 				});
 			//loginAddress	登录地址
 
@@ -295,7 +336,7 @@ namespace TOBA.Account
 			return true;
 		}
 
-		public async Task<bool> CompleteSlideVcAsync()
+		public async Task<bool> CompleteVcAsync()
 		{
 
 			var result = await WebLoginAsync();
@@ -304,6 +345,8 @@ namespace TOBA.Account
 			return result;
 		}
 
+		public DateTime SmsTime { get; set; }
+		public VcType VcType { get; set; }
 		/// <summary>
 		/// 登录
 		/// </summary>
@@ -524,6 +567,7 @@ namespace TOBA.Account
 
 		public bool NeedSlideVcLogin { get; private set; }
 
+		public bool NeedSmsLogin { get; private set; }
 		/// <inheritdoc />
 		public string SlideAppId { get; private set; }
 

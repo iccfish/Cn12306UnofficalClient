@@ -131,12 +131,12 @@ namespace TOBA.UI.Dialogs.Account
 
 			//拉取验证码
 			tc.InitSession(_service.Session);
+			tc.SetIfNeedVc(_service.NeedVcLogin);
 			tc.EnableAutoVc = ProgramConfiguration.Instance.AutoEnterLoginVcCode;
 			//tc.LoadVerifyCode();
 
-			tc.SetIfNeedVc(_service.Session.HttpConf.IsLoginPassCode);
 
-			if (!_service.Session.HttpConf.IsLoginPassCode)
+			if (!_service.NeedVcLogin)
 			{
 				//无需验证码
 				EnterReadyState();
@@ -155,25 +155,33 @@ namespace TOBA.UI.Dialogs.Account
 			_service.RandCode = tc.Code;
 			_service.TempMode = chkTmp.Checked;
 			_service.StorePwd = cbRememberPwd.Checked;
+			_service.VcType   = VcType.None;
+			// 加载用户关键数据
+			_service.Session.UserKeyData = UserKeyDataMap.Current[_service.UserName] ?? _service.Session.UserKeyData;
 
 			//自动识别引起的？
 			var vcResult = tc.AutoVcCode;
 			var result = await _service.LoginAsync().ConfigureAwait(true);
 
-			if (!result && _service.NeedSlideVcLogin)
+			if (!result)
 			{
-				using (var dlg = new SlideVcForm(_service.Session, _service.SlideVcToken, _service.SlideAppId))
+				using (var dlg = new RequestVerification(_service))
 				{
-					if (dlg.ShowDialog(this) != DialogResult.OK)
+					var ret = dlg.ShowDialog(this);
+					if (ret != DialogResult.OK)
 					{
+						_blockAutoSubmitOnce = ret is DialogResult.Cancel;
 						Prepare();
 						return;
 					}
 
+					_service.SmsTime     = dlg.SmsTime;
 					_service.CfSessionId = dlg.CfSessionId;
 					_service.Sig = dlg.Sig;
+					_service.RandCode    = dlg.RandCode;
+					_service.VcType      = dlg.CurrentVcType;
 
-					result = await _service.CompleteSlideVcAsync();
+					result = await _service.CompleteVcAsync();
 				}
 			}
 
@@ -199,7 +207,7 @@ namespace TOBA.UI.Dialogs.Account
 			lblError.Text = $"12306返回信息：{_service.State}";
 			lblError.Visible = true;
 
-			if (isVcError)
+			if (isVcError && _service.NeedVcLogin)
 			{
 				_service.Session.HttpConf.IsLoginPassCode = true;
 
@@ -236,12 +244,20 @@ namespace TOBA.UI.Dialogs.Account
 			AutoSubmitLogin();
 		}
 
+		private bool _blockAutoSubmitOnce;
 		void AutoSubmitLogin()
 		{
 			if (_service.Session?.HttpConf == null)
 				return;
 
-			if (!_service.Session.HttpConf.IsLoginPassCode && btnLogin.Enabled && !cbUserName.Text.IsNullOrEmpty() && !txtPassword.Text.IsNullOrEmpty())
+			// 在上次验证取消后，停止自动登录一次
+			if (_blockAutoSubmitOnce)
+			{
+				_blockAutoSubmitOnce = false;
+				return;
+			}
+
+			if (!_service.NeedVcLogin && btnLogin.Enabled && !cbUserName.Text.IsNullOrEmpty() && !txtPassword.Text.IsNullOrEmpty())
 			{
 				btnLogin.PerformClick();
 			}
@@ -338,10 +354,14 @@ namespace TOBA.UI.Dialogs.Account
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
 			var txt = SelectedUserName;
-			if (string.IsNullOrEmpty(txt)) ToastNotification.Show(this, "请输入用户名");
-			else if (!System.Text.RegularExpressions.Regex.IsMatch(txt, @"^[\d-a-zA-Z\._@]+$")) ToastNotification.Show(this, "用户名不正确");
-			else if (txtPassword.Text.IsNullOrEmpty()) ToastNotification.Show(this, "请输入密码");
-			else if (_service.Session.HttpConf.IsLoginPassCode && tc.Code.IsNullOrEmpty()) ToastNotification.Show(this, "请输入验证码");
+			if (string.IsNullOrEmpty(txt))
+				ToastNotification.Show(this, "请输入用户名");
+			else if (!Regex.IsMatch(txt, @"^[\d-a-zA-Z\._@]+$"))
+				ToastNotification.Show(this, "用户名不正确");
+			else if (txtPassword.Text.IsNullOrEmpty())
+				ToastNotification.Show(this, "请输入密码");
+			else if (_service.NeedVcLogin && tc.Code.IsNullOrEmpty())
+				ToastNotification.Show(this, "请输入验证码");
 			else if (!ProgramConfiguration.Instance.EnableConflictLogin && RunTime.SessionManager.IsLogined(txt, _session) && !_relogin)
 			{
 				DialogResult = DialogResult.OK;
@@ -350,7 +370,9 @@ namespace TOBA.UI.Dialogs.Account
 			}
 			else
 			{
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 				DoLogin();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 			}
 		}
 
@@ -406,15 +428,7 @@ namespace TOBA.UI.Dialogs.Account
 			}
 		}
 
-		private void lnkRecoverPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			Shell.StartUrl(NetworkConfiguration.Current.BaseUri + "login/init#");
-		}
 
-		private void lnkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			Shell.StartUrl(NetworkConfiguration.Current.BaseUri + "regist/init");
-		}
 
 		private void Login_Load(object sender, EventArgs e)
 		{

@@ -8,6 +8,8 @@ using TOBA.WebLib.Sockets5;
 
 namespace TOBA.WebLib
 {
+	using System.Security.Authentication;
+
 	internal class NetClientHandler : BaseHttpHandler
 	{
 		static IWebProxy _systemProxy;
@@ -23,6 +25,9 @@ namespace TOBA.WebLib
 
 		static NetClientHandler()
 		{
+			const SslProtocols         _Tls12 = (SslProtocols)0x00000C00;
+			const SecurityProtocolType Tls12  = (SecurityProtocolType)_Tls12;
+			ServicePointManager.SecurityProtocol = Tls12;
 		}
 
 		internal static void Init()
@@ -160,21 +165,13 @@ namespace TOBA.WebLib
 
 		private Uri BaseUri { get; } = new Uri("https://kyfw.12306.cn/otn/");
 
-		/// <summary>
-		/// 解析URL字符串为URI
-		/// </summary>
-		/// <param name="header">解析后的地址使用的位置</param>
-		/// <param name="url">字符串地址</param>
-		/// <param name="data">获得或设置相关联的数据</param>
-		/// <returns></returns>
-		public override Uri ResolveUri(HttpRequestHeader? header, string url, Dictionary<string, object> data)
+		/// <inheritdoc />
+		public override Uri ResolveUri(HttpRequestHeader? header, string url, Dictionary<string, object> data, ResolveUriType resolveType)
 		{
 			if (url == null)
-				return base.ResolveUri(header, url, data);
+				return base.ResolveUri(header, url, data, resolveType);
 
-			var fullurl = url;
-
-			var uri = new Uri(BaseUri, fullurl);
+			var uri = new Uri(BaseUri, url);
 
 			return uri;
 		}
